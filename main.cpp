@@ -1,11 +1,10 @@
 //
 // Created by 吴波 on 2020/6/22.
 //
-#include<iostream>
-using namespace std;
+#include<stdio.h>
 int main()
 {
-    cout<<"Hello world!"<<endl;
+    printf("Hello World!");
     return 0;
-
 }
+
