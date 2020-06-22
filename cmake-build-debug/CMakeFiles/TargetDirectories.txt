@@ -1,0 +1,3 @@
+/Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles/Employees-INF-management-system.dir
