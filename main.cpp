@@ -5,7 +5,7 @@
 int main()
 {
     printf("Hello World!");
-    return 0;//WSZ
+    return 0;//WSZ1000
 
 }
 
