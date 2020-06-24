@@ -80,7 +80,25 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/justwb/CLionProjects/Employees-INF-management-system/employee.cpp">
+			<Option target="Employees-INF-management-system"/>
+		</Unit>
+		<Unit filename="/Users/justwb/CLionProjects/Employees-INF-management-system/employee.h">
+			<Option target="Employees-INF-management-system"/>
+		</Unit>
 		<Unit filename="/Users/justwb/CLionProjects/Employees-INF-management-system/main.cpp">
+			<Option target="Employees-INF-management-system"/>
+		</Unit>
+		<Unit filename="/Users/justwb/CLionProjects/Employees-INF-management-system/project.cpp">
+			<Option target="Employees-INF-management-system"/>
+		</Unit>
+		<Unit filename="/Users/justwb/CLionProjects/Employees-INF-management-system/project.h">
+			<Option target="Employees-INF-management-system"/>
+		</Unit>
+		<Unit filename="/Users/justwb/CLionProjects/Employees-INF-management-system/stock.cpp">
+			<Option target="Employees-INF-management-system"/>
+		</Unit>
+		<Unit filename="/Users/justwb/CLionProjects/Employees-INF-management-system/stock.h">
 			<Option target="Employees-INF-management-system"/>
 		</Unit>
 		<Unit filename="/Users/justwb/CLionProjects/Employees-INF-management-system/CMakeLists.txt">

@@ -123,6 +123,33 @@ Employees-INF-management-system/fast:
 	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/build
 .PHONY : Employees-INF-management-system/fast
 
+employee.o: employee.cpp.o
+
+.PHONY : employee.o
+
+# target to build an object file
+employee.cpp.o:
+	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/employee.cpp.o
+.PHONY : employee.cpp.o
+
+employee.i: employee.cpp.i
+
+.PHONY : employee.i
+
+# target to preprocess a source file
+employee.cpp.i:
+	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/employee.cpp.i
+.PHONY : employee.cpp.i
+
+employee.s: employee.cpp.s
+
+.PHONY : employee.s
+
+# target to generate assembly for a file
+employee.cpp.s:
+	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/employee.cpp.s
+.PHONY : employee.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -150,6 +177,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+project.o: project.cpp.o
+
+.PHONY : project.o
+
+# target to build an object file
+project.cpp.o:
+	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/project.cpp.o
+.PHONY : project.cpp.o
+
+project.i: project.cpp.i
+
+.PHONY : project.i
+
+# target to preprocess a source file
+project.cpp.i:
+	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/project.cpp.i
+.PHONY : project.cpp.i
+
+project.s: project.cpp.s
+
+.PHONY : project.s
+
+# target to generate assembly for a file
+project.cpp.s:
+	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/project.cpp.s
+.PHONY : project.cpp.s
+
+stock.o: stock.cpp.o
+
+.PHONY : stock.o
+
+# target to build an object file
+stock.cpp.o:
+	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/stock.cpp.o
+.PHONY : stock.cpp.o
+
+stock.i: stock.cpp.i
+
+.PHONY : stock.i
+
+# target to preprocess a source file
+stock.cpp.i:
+	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/stock.cpp.i
+.PHONY : stock.cpp.i
+
+stock.s: stock.cpp.s
+
+.PHONY : stock.s
+
+# target to generate assembly for a file
+stock.cpp.s:
+	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/stock.cpp.s
+.PHONY : stock.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -159,9 +240,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Employees-INF-management-system"
+	@echo "... employee.o"
+	@echo "... employee.i"
+	@echo "... employee.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... project.o"
+	@echo "... project.i"
+	@echo "... project.s"
+	@echo "... stock.o"
+	@echo "... stock.i"
+	@echo "... stock.s"
 .PHONY : help
 
 

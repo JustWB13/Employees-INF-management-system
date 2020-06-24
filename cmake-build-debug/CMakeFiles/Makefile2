@@ -74,12 +74,12 @@ clean: CMakeFiles/Employees-INF-management-system.dir/clean
 CMakeFiles/Employees-INF-management-system.dir/all:
 	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/depend
 	$(MAKE) -f CMakeFiles/Employees-INF-management-system.dir/build.make CMakeFiles/Employees-INF-management-system.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target Employees-INF-management-system"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target Employees-INF-management-system"
 .PHONY : CMakeFiles/Employees-INF-management-system.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Employees-INF-management-system.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Employees-INF-management-system.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Employees-INF-management-system.dir/rule

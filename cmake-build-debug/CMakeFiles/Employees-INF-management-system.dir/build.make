@@ -70,17 +70,62 @@ CMakeFiles/Employees-INF-management-system.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Employees-INF-management-system.dir/main.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/justwb/CLionProjects/Employees-INF-management-system/main.cpp -o CMakeFiles/Employees-INF-management-system.dir/main.cpp.s
 
+CMakeFiles/Employees-INF-management-system.dir/employee.cpp.o: CMakeFiles/Employees-INF-management-system.dir/flags.make
+CMakeFiles/Employees-INF-management-system.dir/employee.cpp.o: ../employee.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Employees-INF-management-system.dir/employee.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Employees-INF-management-system.dir/employee.cpp.o -c /Users/justwb/CLionProjects/Employees-INF-management-system/employee.cpp
+
+CMakeFiles/Employees-INF-management-system.dir/employee.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Employees-INF-management-system.dir/employee.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/justwb/CLionProjects/Employees-INF-management-system/employee.cpp > CMakeFiles/Employees-INF-management-system.dir/employee.cpp.i
+
+CMakeFiles/Employees-INF-management-system.dir/employee.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Employees-INF-management-system.dir/employee.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/justwb/CLionProjects/Employees-INF-management-system/employee.cpp -o CMakeFiles/Employees-INF-management-system.dir/employee.cpp.s
+
+CMakeFiles/Employees-INF-management-system.dir/stock.cpp.o: CMakeFiles/Employees-INF-management-system.dir/flags.make
+CMakeFiles/Employees-INF-management-system.dir/stock.cpp.o: ../stock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Employees-INF-management-system.dir/stock.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Employees-INF-management-system.dir/stock.cpp.o -c /Users/justwb/CLionProjects/Employees-INF-management-system/stock.cpp
+
+CMakeFiles/Employees-INF-management-system.dir/stock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Employees-INF-management-system.dir/stock.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/justwb/CLionProjects/Employees-INF-management-system/stock.cpp > CMakeFiles/Employees-INF-management-system.dir/stock.cpp.i
+
+CMakeFiles/Employees-INF-management-system.dir/stock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Employees-INF-management-system.dir/stock.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/justwb/CLionProjects/Employees-INF-management-system/stock.cpp -o CMakeFiles/Employees-INF-management-system.dir/stock.cpp.s
+
+CMakeFiles/Employees-INF-management-system.dir/project.cpp.o: CMakeFiles/Employees-INF-management-system.dir/flags.make
+CMakeFiles/Employees-INF-management-system.dir/project.cpp.o: ../project.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Employees-INF-management-system.dir/project.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Employees-INF-management-system.dir/project.cpp.o -c /Users/justwb/CLionProjects/Employees-INF-management-system/project.cpp
+
+CMakeFiles/Employees-INF-management-system.dir/project.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Employees-INF-management-system.dir/project.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/justwb/CLionProjects/Employees-INF-management-system/project.cpp > CMakeFiles/Employees-INF-management-system.dir/project.cpp.i
+
+CMakeFiles/Employees-INF-management-system.dir/project.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Employees-INF-management-system.dir/project.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/justwb/CLionProjects/Employees-INF-management-system/project.cpp -o CMakeFiles/Employees-INF-management-system.dir/project.cpp.s
+
 # Object files for target Employees-INF-management-system
 Employees__INF__management__system_OBJECTS = \
-"CMakeFiles/Employees-INF-management-system.dir/main.cpp.o"
+"CMakeFiles/Employees-INF-management-system.dir/main.cpp.o" \
+"CMakeFiles/Employees-INF-management-system.dir/employee.cpp.o" \
+"CMakeFiles/Employees-INF-management-system.dir/stock.cpp.o" \
+"CMakeFiles/Employees-INF-management-system.dir/project.cpp.o"
 
 # External object files for target Employees-INF-management-system
 Employees__INF__management__system_EXTERNAL_OBJECTS =
 
 Employees-INF-management-system: CMakeFiles/Employees-INF-management-system.dir/main.cpp.o
+Employees-INF-management-system: CMakeFiles/Employees-INF-management-system.dir/employee.cpp.o
+Employees-INF-management-system: CMakeFiles/Employees-INF-management-system.dir/stock.cpp.o
+Employees-INF-management-system: CMakeFiles/Employees-INF-management-system.dir/project.cpp.o
 Employees-INF-management-system: CMakeFiles/Employees-INF-management-system.dir/build.make
 Employees-INF-management-system: CMakeFiles/Employees-INF-management-system.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Employees-INF-management-system"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/justwb/CLionProjects/Employees-INF-management-system/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Employees-INF-management-system"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Employees-INF-management-system.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
