@@ -5,6 +5,5 @@
 int main()
 {
     printf("Hello World!");
-    return 0;//WSZ100
+    return 0;
 }
-
