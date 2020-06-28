@@ -88,7 +88,7 @@ void admin_check()
     cout<<"*   欢迎进入管理员登陆菜单   *"<<endl;
     cout<<"**************************"<<endl;
     hash = BKDRHash(enter_passwd());
-    if (hash == admin_passwd)
+    if (hash == admin_passwd)//管理员密码
     {
         cout << "密码正确！欢迎管理员!" << endl;
         cout << "按任意键继续" << endl;
