@@ -123,8 +123,9 @@ void login()
         case 1:
             for(vector<general_manager>::iterator i=GM.begin();i!=GM.end();i++)
             {
-                if(id==(*i).)
+                if(id==(*i).id)
                 {
+                    general_manager tmp=*i;
                     hash = BKDRHash(enter_passwd());
                     if (hash == general_manager[i].gethash()) {
                         cout << "密码正确！欢迎总经理" << general_manager[i].getname() << "!" << endl;
