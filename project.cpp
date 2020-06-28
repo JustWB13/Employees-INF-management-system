@@ -3,7 +3,6 @@
 //
 
 #include "project.h"
-<<<<<<< HEAD
 
 projects::project::project(string P_ID,string P_NAME,vector<string> PIC_NAME,vector<string> PIC_ID,vector<string> S_ID,string INTRO,int E_AMOUNT,int E_ACCOMPLISHED)
 {
@@ -16,5 +15,21 @@ projects::project::project(string P_ID,string P_NAME,vector<string> PIC_NAME,vec
     E_amount=E_AMOUNT;
     E_accomplished=E_ACCOMPLISHED;
 }
-=======
->>>>>>> origin/master
+void projects::show_ROP(string P_ID)
+{
+    for(vector<project>::iterator i=a.begin();i!=a.end();i++)
+    {
+        if((*i).p_id==P_ID)
+        {
+            project tmp=*i;
+            if(tmp.E_amount==tmp.E_accomplished)
+            {
+                cout<<"项目已结束"<<endl;
+                break;
+            }
+            double rate=((double)tmp.E_accomplished)/((double)tmp.E_amount)*100;
+            cout.precision(2);
+            cout<<"任务已完成"<<rate<<"%"<<endl;
+        }
+    }
+}

@@ -118,7 +118,7 @@ void login()
     cout<<"请输入您的员工id:";
     cin>>id;
     fir_id=id.at(0);
-    switch(fir_id):
+    switch(fir_id)
     {
         case 1:
             for(vector<general_manager>::iterator i=GM.begin();i!=GM.end();i++)
