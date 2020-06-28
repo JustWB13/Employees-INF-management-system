@@ -115,7 +115,7 @@ void login()
     cout<<"**************************"<<endl;
     cout<<"*    欢迎进入员工登陆菜单    *"<<endl;
     cout<<"**************************"<<endl;
-    cout<<"请输入您的员工id:"
+    cout<<"请输入您的员工id:";
     cin>>id;
     fir_id=id.at(0);
     switch(fir_id):
