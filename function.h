@@ -115,7 +115,7 @@ void login()
     cout<<"**************************"<<endl;
     cout<<"*    欢迎进入员工登陆菜单    *"<<endl;
     cout<<"**************************"<<endl;
-    cout<<"请输入您的员工id:"
+    cout<<"请输入您的员工id:";
     cin>>id;
     fir_id=id.at(0);
     switch(fir_id):
@@ -123,8 +123,9 @@ void login()
         case 1:
             for(vector<general_manager>::iterator i=GM.begin();i!=GM.end();i++)
             {
-                if(id==(*i).)
+                if(id==(*i).id)
                 {
+                    general_manager
                     hash = BKDRHash(enter_passwd());
                     if (hash == general_manager[i].gethash()) {
                         cout << "密码正确！欢迎总经理" << general_manager[i].getname() << "!" << endl;
