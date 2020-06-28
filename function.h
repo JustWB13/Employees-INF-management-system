@@ -10,6 +10,11 @@
 #include<cstdlib>
 using namespace std;
 #endif //EMPLOYEES_INF_MANAGEMENT_SYSTEM
+
+#include"employee.h"
+#include"stock.h"
+#include"project.h"
+
 string get_passwd();
 inline int BKDRHash(string a);
 void main_page();
@@ -22,6 +27,12 @@ void normal_employee_page();
 void section_chief_page();
 void general_manager_page();
 string enter_passwd();
+void employee_add();
+void employee_delete();
+void INF_change();
+void INF_search();
+void wage_statistic();
+void Stock_show();
 
 inline int BKDRHash(string a)
 {
@@ -70,8 +81,29 @@ void main_page()
 
 void admin_check()
 {
-    //密码
-    admin_page();
+    string id;
+    int hash;
+    system("CLS");
+    cout<<"**************************"<<endl;
+    cout<<"*   欢迎进入管理员登陆菜单   *"<<endl;
+    cout<<"**************************"<<endl;
+    hash = BKDRHash(enter_passwd());
+    if (hash == admin_passwd)
+    {
+        cout << "密码正确！欢迎管理员!" << endl;
+        cout << "按任意键继续" << endl;
+        getchar();
+        system("CLS");
+        admin_page();
+    }
+    else
+    {
+        cout << "密码错误！返回主菜单！" << endl;
+        cout << "按任意键继续" << endl;
+        getchar();
+        system("CLS");
+        main_page();
+    }
 }
 
 void admin_page()
@@ -127,9 +159,9 @@ void login()
                 {
                     general_manager tmp=*i;
                     hash = BKDRHash(enter_passwd());
-                    if (hash == tmp.hash)
+                    if (hash == tmp.get_hash())
                     {
-                        cout << "密码正确！欢迎总经理" << tmp.name << "!" << endl;
+                        cout << "密码正确！欢迎总经理" << tmp.get_name << "!" << endl;
                         cout << "按任意键继续" << endl;
                         getchar();
                         system("CLS");
@@ -150,6 +182,102 @@ void login()
             getchar();
             system("CLS");
             main_page();
+        case 2:
+            for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
+            {
+                if(id==(*i).id)
+                {
+                    section_chief tmp=*i;
+                    hash = BKDRHash(enter_passwd());
+                    if (hash == tmp.get_hash())
+                    {
+                        cout << "密码正确！欢迎科长" << tmp.get_name << "!" << endl;
+                        cout << "按任意键继续" << endl;
+                        getchar();
+                        system("CLS");
+                        section_chief_page();
+                    }
+                    else
+                    {
+                        cout << "密码错误！返回主菜单！" << endl;
+                        cout << "按任意键继续" << endl;
+                        getchar();
+                        system("CLS");
+                        main_page();
+                    }
+                }
+            }
+            cout<<"该员工不存在!返回主菜单！"<<endl;
+            cout << "按任意键继续" << endl;
+            getchar();
+            system("CLS");
+            main_page();
+        case 3:
+            for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
+            {
+                if(id==(*i).id)
+                {
+                    normal_employee tmp=*i;
+                    hash = BKDRHash(enter_passwd());
+                    if (hash == tmp.get_hash())
+                    {
+                        cout << "密码正确！欢迎零食雇员" << tmp.get_name << "!" << endl;
+                        cout << "按任意键继续" << endl;
+                        getchar();
+                        system("CLS");
+                        normal_employee_page();
+                    }
+                    else
+                    {
+                        cout << "密码错误！返回主菜单！" << endl;
+                        cout << "按任意键继续" << endl;
+                        getchar();
+                        system("CLS");
+                        main_page();
+                    }
+                }
+            }
+            cout<<"该员工不存在!返回主菜单！"<<endl;
+            cout << "按任意键继续" << endl;
+            getchar();
+            system("CLS");
+            main_page();
+        case 4:
+            for(vector<temp_employee>::iterator i=TE.begin();i!=TE.end();i++)
+            {
+                if(id==(*i).id)
+                {
+                    temp_employee tmp=*i;
+                    hash = BKDRHash(enter_passwd());
+                    if (hash == tmp.get_hash())
+                    {
+                        cout << "密码正确！欢迎临时雇员" << tmp.get_name << "!" << endl;
+                        cout << "按任意键继续" << endl;
+                        getchar();
+                        system("CLS");
+                        temp_employee_page();
+                    }
+                    else
+                    {
+                        cout << "密码错误！返回主菜单！" << endl;
+                        cout << "按任意键继续" << endl;
+                        getchar();
+                        system("CLS");
+                        main_page();
+                    }
+                }
+            }
+            cout<<"该员工不存在!返回主菜单！"<<endl;
+            cout << "按任意键继续" << endl;
+            getchar();
+            system("CLS");
+            main_page();
+        default:
+            cout<<"该员工不存在!返回主菜单！"<<endl;
+            cout << "按任意键继续" << endl;
+            getchar();
+            system("CLS");
+            main_page();
     }
 }
 
@@ -165,3 +293,4 @@ string enter_passwd()
     }
     return password;
 }
+
