@@ -86,6 +86,9 @@
 		<Unit filename="/Users/justwb/CLionProjects/Employees-INF-management-system/employee.h">
 			<Option target="Employees-INF-management-system"/>
 		</Unit>
+		<Unit filename="/Users/justwb/CLionProjects/Employees-INF-management-system/function.h">
+			<Option target="Employees-INF-management-system"/>
+		</Unit>
 		<Unit filename="/Users/justwb/CLionProjects/Employees-INF-management-system/main.cpp">
 			<Option target="Employees-INF-management-system"/>
 		</Unit>

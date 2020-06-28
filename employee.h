@@ -13,19 +13,19 @@ using namespace std;
 class employee
 {
 protected:
-    string ID,name,sex,phone_number;
+    string id,name,sex,phone_number;
     int hash,wage,cur_wage;
 public:
-    employee();
-    ~employee();
+    employee(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,int WAGE,int CUR_WAGE);
 };
 
 class temp_employee: public employee
 {
 protected:
-    string P_name,P_ID,S_ID;
+    string p_name,p_id,s_id;
     bool task_status;
 public:
+    temp_employee(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,int WAGE,int CUR_WAGE);
 };
 
 class normal_employee: public temp_employee
@@ -33,12 +33,14 @@ class normal_employee: public temp_employee
 protected:
     int cur_stock;
 public:
+    normal_employee(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,int WAGE,int CUR_WAGE,int CUR_STOCK);
 };
 
 class section_chief: public normal_employee
 {
 protected:
 public:
+    section_chief(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,int WAGE,int CUR_WAGE,int CUR_STOCK);
 };
 
 class general_manager: public employee
@@ -46,4 +48,5 @@ class general_manager: public employee
 protected:
     int cur_stock;
 public:
+    general_manager(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,int WAGE,int CUR_WAGE,int CUR_STOCK);
 };

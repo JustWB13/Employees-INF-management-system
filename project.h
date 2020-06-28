@@ -15,10 +15,11 @@ class projects
 protected:
     struct project
     {
-        string P_ID,P_name;
-        vector<string> PIC_name,PIC_ID,S_ID;//person in charge
+        string p_id,p_name;
+        vector<string> pic_name,pic_id,s_id;//person in charge
         string intro;
-        int E_mount,E_accomplished;
+        int E_amount,E_accomplished;
+        project(string P_ID,string P_NAME,vector<string> PIC_NAME,vector<string> PIC_ID,vector<string> S_ID,string INTRO,int E_AMOUNT,int E_ACCOMPLISHED);
     };
     vector<project> a;
 public:

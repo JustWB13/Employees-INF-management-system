@@ -6,7 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/Users/justwb/CLionProjects/Employees-INF-management-system/main.cpp
-stdio.h
+/Users/justwb/CLionProjects/Employees-INF-management-system/employee.cpp
+employee.h
+/Users/justwb/CLionProjects/Employees-INF-management-system/employee.h
+
+/Users/justwb/CLionProjects/Employees-INF-management-system/employee.h
+iostream
+-
+string
+-
+vector
 -
 

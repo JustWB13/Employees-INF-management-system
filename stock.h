@@ -17,9 +17,9 @@ protected:
     struct stock
     {
         bool status;
-        int mount;
+        int amount;
         string user_ID;
-        stock();
+        stock(bool STATUS,int AMOUNT,string USER_ID);
     };
     vector<stock> a;
 public:
