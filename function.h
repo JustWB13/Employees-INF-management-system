@@ -7,7 +7,7 @@
 #include<iostream>
 #include<vector>
 #include<string>
-#include<system>
+#include<cstdlib>
 using namespace std;
 #endif //EMPLOYEES_INF_MANAGEMENT_SYSTEM
 string get_passwd();
