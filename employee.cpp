@@ -3,6 +3,7 @@
 //
 
 #include "employee.h"
+<<<<<<< HEAD
 
 employee::employee(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,int WAGE,int CUR_WAGE)
 {
@@ -33,3 +34,5 @@ general_manager::general_manager(string ID,string NAME,string SEX,string PHONE_N
 {
     cur_stock=CUR_STOCK;
 }
+=======
+>>>>>>> origin/master

@@ -3,6 +3,7 @@
 //
 
 #include "project.h"
+<<<<<<< HEAD
 
 projects::project::project(string P_ID,string P_NAME,vector<string> PIC_NAME,vector<string> PIC_ID,vector<string> S_ID,string INTRO,int E_AMOUNT,int E_ACCOMPLISHED)
 {
@@ -15,3 +16,5 @@ projects::project::project(string P_ID,string P_NAME,vector<string> PIC_NAME,vec
     E_amount=E_AMOUNT;
     E_accomplished=E_ACCOMPLISHED;
 }
+=======
+>>>>>>> origin/master
