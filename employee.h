@@ -17,6 +17,7 @@ protected:
     int hash,wage,cur_wage;
 public:
     employee(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,int WAGE,int CUR_WAGE);
+    int get_hash();
 };
 
 class temp_employee: public employee

@@ -25,7 +25,5 @@ protected:
 public:
     projects();
     ~projects();
+    void show_ROP(string P_ID);//rate of progress
 };
-
-
-
