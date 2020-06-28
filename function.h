@@ -17,10 +17,10 @@ void admin_check();
 void admin_page();
 void login();
 void passwd();
-void temp_employee();
-void normal_employee();
-void section_chief();
-void general_manager();
+void temp_employee_page();
+void normal_employee_page();
+void section_chief_page();
+void general_manager_page();
 string enter_passwd();
 
 inline int BKDRHash(string a)
@@ -127,12 +127,13 @@ void login()
                 {
                     general_manager tmp=*i;
                     hash = BKDRHash(enter_passwd());
-                    if (hash == general_manager[i].gethash()) {
-                        cout << "密码正确！欢迎总经理" << general_manager[i].getname() << "!" << endl;
+                    if (hash == tmp.hash)
+                    {
+                        cout << "密码正确！欢迎总经理" << tmp.name << "!" << endl;
                         cout << "按任意键继续" << endl;
                         getchar();
                         system("CLS");
-                        general_manager();
+                        general_manager_page();
                     }
                     else
                     {
@@ -144,15 +145,11 @@ void login()
                     }
                 }
             }
-            if(i==general_manager.size())
-            {
-                cout<<"该员工不存在!返回主菜单！"<<endl;
-                cout << "按任意键继续" << endl;
-                getchar();
-                system("CLS");
-                main_page();
-            }
-            break;
+            cout<<"该员工不存在!返回主菜单！"<<endl;
+            cout << "按任意键继续" << endl;
+            getchar();
+            system("CLS");
+            main_page();
     }
 }
 
@@ -160,9 +157,8 @@ string enter_passwd()
 {
     cout<<"请输入密码： "<<endl;
     string password;
-    int i=0;
     char ch;
-    while ((ch=_getch())!=13)
+    while ((ch=getchar())!=13)
     {
         password+=ch;//string对象重载了+=
         cout<<"*";
