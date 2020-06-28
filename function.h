@@ -125,7 +125,7 @@ void login()
             {
                 if(id==(*i).id)
                 {
-                    general_manager
+                    general_manager tmp=*i;
                     hash = BKDRHash(enter_passwd());
                     if (hash == general_manager[i].gethash()) {
                         cout << "密码正确！欢迎总经理" << general_manager[i].getname() << "!" << endl;
