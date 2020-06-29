@@ -19,14 +19,15 @@ protected:
     {
         bool status;
         int amount;
+        double price;
         string user_ID;
-        stock(bool STATUS,int AMOUNT,string USER_ID);
+        stock(bool STATUS,int AMOUNT,string USER_ID,double PRICE);
     };
     vector<stock> a;
 public:
     stocks();
     ~stocks();
-    void show()
+    void show(bool admin_tag);
 };
 
 

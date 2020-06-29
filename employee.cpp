@@ -35,3 +35,5 @@ general_manager::general_manager(string ID,string NAME,string SEX,string PHONE_N
 }
 int employee::get_hash(){return hash;}//返回密码的哈希值
 string employee::get_name(){return name;}
+string temp_employee::get_p_id(){return p_id;}
+string employee::get_id() {return id;}
