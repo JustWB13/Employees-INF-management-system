@@ -7,7 +7,7 @@
 employee::employee(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,int WAGE,int CUR_WAGE)
 {
     id=ID;
-    name=NAME;
+    name=NAME;d
     sex=SEX;
     phone_number=PHONE_NUMBER;
     hash=HASH;
@@ -34,3 +34,4 @@ general_manager::general_manager(string ID,string NAME,string SEX,string PHONE_N
     cur_stock=CUR_STOCK;
 }
 int employee::get_hash(){return hash;}//返回密码的哈希值
+string employee::get_name(){return name;}

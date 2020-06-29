@@ -18,6 +18,7 @@ protected:
 public:
     employee(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,int WAGE,int CUR_WAGE);
     int get_hash();
+    string get_name();
 };
 
 class temp_employee: public employee
