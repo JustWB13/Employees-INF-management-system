@@ -7,7 +7,7 @@
 employee::employee(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,int WAGE,int CUR_WAGE)
 {
     id=ID;
-    name=NAME;d
+    name=NAME;
     sex=SEX;
     phone_number=PHONE_NUMBER;
     hash=HASH;

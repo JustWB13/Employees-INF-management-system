@@ -7,6 +7,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<set>
 using namespace std;
 #endif //EMPLOYEES_INF_MANAGEMENT_SYSTEM
 
@@ -19,7 +20,8 @@ protected:
         vector<string> pic_name,pic_id,s_id;//person in charge
         string intro;
         int E_amount,E_accomplished;
-        project(string P_ID,string P_NAME,vector<string> PIC_NAME,vector<string> PIC_ID,vector<string> S_ID,string INTRO,int E_AMOUNT,int E_ACCOMPLISHED);
+        bool status;
+        project(string P_ID,string P_NAME,vector<string> PIC_NAME,vector<string> PIC_ID,vector<string> S_ID,string INTRO,int E_AMOUNT,int E_ACCOMPLISHED,bool STATUS);
     };
     vector<project> a;
 public:
