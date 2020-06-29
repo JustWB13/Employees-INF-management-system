@@ -228,7 +228,7 @@ void login()
                     hash = BKDRHash(enter_passwd());
                     if (hash == tmp.get_hash())
                     {
-                        cout << "密码正确！欢迎临时雇员" << tmp.get_name() << "!" << endl;
+                        cout << "密码正确！欢迎普通雇员" << tmp.get_name() << "!" << endl;
                         cout << "按任意键继续" << endl;
                         getchar();
                         system("CLS");
