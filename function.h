@@ -228,7 +228,7 @@ void login()
                     hash = BKDRHash(enter_passwd());
                     if (hash == tmp.get_hash())
                     {
-                        cout << "密码正确！欢迎零食雇员" << tmp.get_name() << "!" << endl;
+                        cout << "密码正确！欢迎正式雇员" << tmp.get_name() << "!" << endl;
                         cout << "按任意键继续" << endl;
                         getchar();
                         system("CLS");
@@ -389,7 +389,7 @@ void general_manager_page()
 {
     int n;
     cout<<"**************************"<<endl;
-    cout<<"*      欢迎进入科长菜单     *"<<endl;
+    cout<<"*      欢迎进入总经理菜单    *"<<endl;
     cout<<"*      1.查询全体员工信息   *"<<endl;
     cout<<"*      2.更改个人信息       *"<<endl;
     cout<<"*      3.购买股票          *"<<endl;
