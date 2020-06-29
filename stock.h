@@ -25,6 +25,7 @@ protected:
 public:
     stocks();
     ~stocks();
+    void show()
 };
 
 
