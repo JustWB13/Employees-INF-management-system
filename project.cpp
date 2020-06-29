@@ -4,7 +4,7 @@
 
 #include "project.h"
 
-projects::project::project(string P_ID,string P_NAME,vector<string> PIC_NAME,vector<string> PIC_ID,vector<string> S_ID,string INTRO,int E_AMOUNT,int E_ACCOMPLISHED)
+projects::project::project(string P_ID,string P_NAME,vector<string> PIC_NAME,vector<string> PIC_ID,vector<string> S_ID,string INTRO,int E_AMOUNT,int E_ACCOMPLISHED,bool STATUS)
 {
     p_id=P_ID;
     p_name=P_NAME;
@@ -14,6 +14,7 @@ projects::project::project(string P_ID,string P_NAME,vector<string> PIC_NAME,vec
     intro=INTRO;
     E_amount=E_AMOUNT;
     E_accomplished=E_ACCOMPLISHED;
+    status=false;
 }
 void projects::show_ROP(string P_ID)
 {
