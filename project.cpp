@@ -96,19 +96,19 @@ bool projects::id_check(string p_id)
     return true;
 }
 void projects::project_add(string id, string name, vector<string> PIC_NAME, vector<string> PIC_ID, vector<string> S_ID, string INTRO, int E_AMOUNT, int E_ACCOMPLISHED, bool STATUS, double PRICE){a.push_back(project(id,name,PIC_NAME,PIC_ID,S_ID,INTRO,E_AMOUNT,E_ACCOMPLISHED,false,PRICE));}
-projects::books()
+projects::projects()
 {
-    ifstream bd;
-    bd.open("book_database.txt",ios::in);
+    ifstream pd;
+    pd.open("book_database.txt",ios::in);
     int all;
-    bd>>all;
+    pd>>all;
     string name,isbn,pub_house,author;
     double price;
     int sales;
     for(int i=1;i<=all;i++)
     {
-        bd>>name>>isbn>>pub_house>>author>>price>>sales;
-        b_lib.push_back(book(name,isbn,pub_house,author,price,sales));
+        pd>>name>>isbn>>pub_house>>author>>price>>sales;
+        a.push_back(projects(name,isbn,pub_house,author,price,sales));
     }
     bd.close();
     cout<<"Books' database load over!"<<endl;
