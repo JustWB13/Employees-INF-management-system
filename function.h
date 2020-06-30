@@ -29,6 +29,7 @@ void normal_employee_page();
 void section_chief_page();
 void general_manager_page();
 string enter_passwd();
+void employee_write(vector<general_manager> GM,vector<section_chief> SC,vector<normal_employee> NE,vector<temp_employee> TE);//用户信息写入文件
 void employee_load(vector<general_manager> &GM,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE);//员工信息读入（从文件中）
 void employee_add(set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工添加
 void employee_delete(stocks &S,projects &P,set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工删除
@@ -43,9 +44,116 @@ void Project_start(projects &P,vector<section_chief> &SC,vector<normal_employee>
 void Office_add(vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC);//科室增加(需要一名科长的ID与至少一名普通员工的ID)
 void Office_dismiss(string s_id,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC);//科室解散(需要科室ID)
 
+void employee_write(vector<general_manager> GM,vector<section_chief> SC,vector<normal_employee> NE,vector<temp_employee> TE)//用户信息写入文件
+{
+    ofstream write;
+    write.open("TE.txt",ios::out);
+    int n=TE.size();
+    for(int i=0;i<n;i++)
+    {
+        write<<TE[i].get_id()<<endl
+             <<TE[i].get_name()<<endl
+             <<TE[i].get_sex()<<endl
+             <<TE[i].get_phone_number()<<endl
+             <<TE[i].get_hash()<<endl
+             <<TE[i].get_wage()<<endl
+             <<TE[i].get_cur_wage()<<endl
+             <<TE[i].get_p_name()<<endl
+             <<TE[i].get_p_id()<<endl
+             <<TE[i].get_s_id()<<endl
+             <<TE[i].get_task_status()<<endl;
+    }
+    write.close();
+    write.open("NE.txt",ios::out);
+    n=NE.size();
+    for(int i=0;i<n;i++)
+    {
+        write<<NE[i].get_id()<<endl
+             <<NE[i].get_name()<<endl
+             <<NE[i].get_sex()<<endl
+             <<NE[i].get_phone_number()<<endl
+             <<NE[i].get_hash()<<endl
+             <<NE[i].get_wage()<<endl
+             <<NE[i].get_cur_wage()<<endl
+             <<NE[i].get_p_name()<<endl
+             <<NE[i].get_p_id()<<endl
+             <<NE[i].get_s_id()<<endl
+             <<NE[i].get_task_status()<<endl
+             <<NE[i].get_stock()<<endl;
+    }
+    write.close();
+    write.open("SC.txt",ios::out);
+    n=SC.size();
+    for(int i=0;i<n;i++)
+    {
+        write<<SC[i].get_id()<<endl
+             <<SC[i].get_name()<<endl
+             <<SC[i].get_sex()<<endl
+             <<SC[i].get_phone_number()<<endl
+             <<SC[i].get_hash()<<endl
+             <<SC[i].get_wage()<<endl
+             <<SC[i].get_cur_wage()<<endl
+             <<SC[i].get_p_name()<<endl
+             <<SC[i].get_p_id()<<endl
+             <<SC[i].get_s_id()<<endl
+             <<SC[i].get_task_status()<<endl
+             <<SC[i].get_stock()<<endl;
+    }
+    write.close();
+    write.open("GM.txt",ios::out);
+    n=GM.size();
+    for(int i=0;i<n;i++)
+    {
+        write<<GM[i].get_id()<<endl
+             <<GM[i].get_name()<<endl
+             <<GM[i].get_sex()<<endl
+             <<GM[i].get_phone_number()<<endl
+             <<GM[i].get_hash()<<endl
+             <<GM[i].get_wage()<<endl
+             <<GM[i].get_stock()<<endl;
+    }
+}
+
 void employee_load(vector<general_manager> &GM,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE)//员工信息读入（从文件中）
 {
-
+    ifstream load;
+    load.open("TE.txt",ios::in);
+    int n;
+    string id,name,sex,phone_number;
+    int hash,cur_stock;
+    double wage,cur_wage;
+    string p_name,p_id,s_id;
+    bool task_status;
+    load>>n;
+    for(int i=1;i<=n;i++)
+    {
+        load>>id>>name>>sex>>phone_number>>hash>>wage>>cur_wage>>p_name>>p_id>>s_id>>task_status;
+        TE.push_back(temp_employee(id,name,sex,phone_number,p_name,p_id,s_id,hash,wage,cur_wage));
+    }
+    load.close();
+    load.open("NE.txt",ios::in);
+    load>>n;
+    for(int i=1;i<=n;i++)
+    {
+        load>>id>>name>>sex>>phone_number>>hash>>wage>>cur_wage>>p_name>>p_id>>s_id>>task_status>>cur_stock;
+        NE.push_back(normal_employee(id,name,sex,phone_number,p_name,p_id,s_id,hash,wage,cur_wage,cur_stock))
+    }
+    load.close();
+    load.open("SC.txt",ios::in);
+    load>>n;
+    for(int i=1;i<=n;i++)
+    {
+        load>>id>>name>>sex>>phone_number>>hash>>wage>>cur_wage>>p_name>>p_id>>s_id>>task_status>>cur_stock;
+        SC.push_back(section_chief(id,name,sex,phone_number,p_name,p_id,s_id,hash,wage,cur_wage,cur_stock));
+    }
+    load.close();
+    load.open("GM.txt",ios::in);
+    load>>n;
+    for(int i=1;i<=n;i++)
+    {
+        load>>id>>name>>sex>>phone_number>>hash>>wage>>cur_wage>>cur_stock;
+        GM.push_back(general_manager(id,name,sex,phone_number,hash,wage,cur_wage,cur_stock));
+    }
 }
 
 void Project_start(projects &P,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE)//启动立项
