@@ -78,6 +78,27 @@ int main()//test
 
                         flag = true;
                         general_manager tmp = *i;
+                        if(tmp.get_hash()==-1)
+                        {
+                            cout<<"初次登陆，请设置新密码！"<<endl;
+                            string new_passwd1,new_passwd2;
+                            new_passwd1=enter_passwd();
+                            cout<<"请确认你的密码！"<<endl;
+                            new_passwd2=enter_passwd();
+                            if(new_passwd1==new_passwd2)
+                            {
+                                tmp.hash_update(BKDRHash(new_passwd1));
+                                system("CLS");
+                            }
+                            else
+                            {
+                                cout<<"两次密码不一致！即将回到主菜单！"<<endl;
+                                getchar();
+                                system("CLS");
+                                main_page();
+                                break;
+                            }
+                        }
                         hash = BKDRHash(enter_passwd());
                         if (hash == tmp.get_hash())
                         {
@@ -136,6 +157,27 @@ int main()//test
                     {
                         flag = true;
                         section_chief tmp = *i;
+                        if(tmp.get_hash()==-1)
+                        {
+                            cout<<"初次登陆，请设置新密码！"<<endl;
+                            string new_passwd1,new_passwd2;
+                            new_passwd1=enter_passwd();
+                            cout<<"请确认你的密码！"<<endl;
+                            new_passwd2=enter_passwd();
+                            if(new_passwd1==new_passwd2)
+                            {
+                                tmp.hash_update(BKDRHash(new_passwd1));
+                                system("CLS");
+                            }
+                            else
+                            {
+                                cout<<"两次密码不一致！即将回到主菜单！"<<endl;
+                                getchar();
+                                system("CLS");
+                                main_page();
+                                break;
+                            }
+                        }
                         hash = BKDRHash(enter_passwd());
                         if (hash == tmp.get_hash())
                         {
@@ -191,6 +233,27 @@ int main()//test
                     {
                         flag = true;
                         normal_employee tmp = *i;
+                        if(tmp.get_hash()==-1)
+                        {
+                            cout<<"初次登陆，请设置新密码！"<<endl;
+                            string new_passwd1,new_passwd2;
+                            new_passwd1=enter_passwd();
+                            cout<<"请确认你的密码！"<<endl;
+                            new_passwd2=enter_passwd();
+                            if(new_passwd1==new_passwd2)
+                            {
+                                tmp.hash_update(BKDRHash(new_passwd1));
+                                system("CLS");
+                            }
+                            else
+                            {
+                                cout<<"两次密码不一致！即将回到主菜单！"<<endl;
+                                getchar();
+                                system("CLS");
+                                main_page();
+                                break;
+                            }
+                        }
                         hash = BKDRHash(enter_passwd());
                         if (hash == tmp.get_hash())
                         {
@@ -246,6 +309,27 @@ int main()//test
                     {
                         flag = true;
                         temp_employee tmp = *i;
+                        if(tmp.get_hash()==-1)
+                        {
+                            cout<<"初次登陆，请设置新密码！"<<endl;
+                            string new_passwd1,new_passwd2;
+                            new_passwd1=enter_passwd();
+                            cout<<"请确认你的密码！"<<endl;
+                            new_passwd2=enter_passwd();
+                            if(new_passwd1==new_passwd2)
+                            {
+                                tmp.hash_update(BKDRHash(new_passwd1));
+                                system("CLS");
+                            }
+                            else
+                            {
+                                cout<<"两次密码不一致！即将回到主菜单！"<<endl;
+                                getchar();
+                                system("CLS");
+                                main_page();
+                                break;
+                            }
+                        }
                         hash = BKDRHash(enter_passwd());
                         if (hash == tmp.get_hash())
                         {

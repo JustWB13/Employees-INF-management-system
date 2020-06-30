@@ -45,7 +45,7 @@ int general_manager::get_stock(){return cur_stock;}
 void normal_employee::stock_sale(int amount){cur_wage-=amount;}//股票卖出
 void general_manager::stock_sale(int amount){cur_wage-=amount;}
 void temp_employee::task_confirm(){task_status=true;}//确认任务完成
-void temp_employee::project_update(double p_price){p_id="";p_name="";cur_wage+=(wage+p_price*0.125)}//工程结束后临时工信息更新
+void temp_employee::project_update(double p_price){p_id="";p_name="";cur_wage+=(wage+p_price*0.125);}//工程结束后临时工信息更新
 void normal_employee::project_update(double p_price,double s_price){p_id="";p_name="";cur_wage+=(wage+p_price*0.125+s_price*cur_stock*0.1);}//工程结束后普通雇员信息更新
 void section_chief::project_update(double p_price,double s_price){p_id="";p_name="";cur_wage+=(wage+p_price*0.25+s_price*cur_stock*0.1);}//科长
 void general_manager::project_update(double p_price, double s_price){cur_wage+=(wage+p_price*0.5+s_price*cur_stock*0.1);}//总经理
