@@ -2,7 +2,7 @@
 // Created by 吴波 on 2020/6/22.
 //
 #include "function.h"
-int main()
+int main()//test
 {
     set<string> id_check;
     vector<temp_employee> TE;
