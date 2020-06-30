@@ -35,6 +35,3 @@ public:
     int stock_sale(string u_id,int amount);
     double get_sp();
 };
-
-
-

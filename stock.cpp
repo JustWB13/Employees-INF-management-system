@@ -55,6 +55,7 @@ double stocks::stock_buy(string ST_ID, double money)
             {
                 (*i).price=tmp.amount*stock_price;
                 (*i).status=true;
+                cout<<"购买成功!"<<endl;
                 return (*i).price;
             }
             else
@@ -69,52 +70,7 @@ double stocks::stock_buy(string ST_ID, double money)
 }
 int stocks::stock_sale(string u_id, int amount)
 {
-    int tmp=++st_amount;
-    string st_id;
-    char orz[10];
-    for(int i=0;tmp!=0;tmp>>=1,i++)
-    {
-        orz[i]=(tmp%10+'0');
-    }
-    a.push_back(stock(false,amount,u_id,st_id,0));
+    a.push_back(stock(false,amount,u_id,to_string(++st_amount),0));
+    cout<<"已成功上架!"<<endl;
 }
 double stocks::get_sp() {return stock_price;}
-stocks::stocks()
-{
-    ifstream sd;
-    sd.open("stock_database.txt",ios::in);
-    int all;
-    sd>>all;
-    static double stock_price;
-    static int st_amount;
-    bool status;
-    int amount;
-    double price;
-    string user_ID,st_id;
-    for(int i=1;i<=all;i++)
-    {
-        sd>>status>>amount>>user_ID>>st_id>>price;
-        a.push_back(stock(status,amount,user_ID,st_id,price));
-    }
-    sd.close();
-    cout<<"股票文件读取完毕！"<<endl;
-}
-stocks::~stocks()
-{
-    ofstream sd;
-    sd.open("stock_database.txt",ios::out);
-    int all=a.size();
-    sd<<all<<endl;
-    stock tmp;
-    for(vector<stock>::iterator i=a.begin();i!=a.end();i++)
-    {
-        tmp=*i;
-        sd<<tmp.status<<endl
-          <<tmp.amount<<endl
-          <<tmp.user_ID<<endl
-          <<tmp.st_id<<endl
-          <<tmp.price<<endl;
-    }
-    sd.close();
-    cout<<"股票文件保存完成！"<<endl;
-}

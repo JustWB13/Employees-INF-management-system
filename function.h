@@ -35,11 +35,203 @@ void INF_search(string u_id,vector<temp_employee> TE,vector<normal_employee> NE,
 void wage_statistic(vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC,vector<general_manager> GM);//员工工资统计
 void Stock_get(string u_id,stocks &S,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//股票购买
 void Stock_sale(string u_id,stocks &S,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//股票出售
-void TS_update(string s_id,vector<normal_employee> NE,vector<temp_employee> TE);//工作状态更新
-void INF_update(string p_id,projects &P);//结束项目
+void TS_update(string s_id,projects &P,vector<normal_employee> NE,vector<temp_employee> TE);//工作状态更新
+void project_end(string p_id,string gm_id,projects &P,stocks &S,vector<general_manager> &GM,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE);//结束任务并更新员工状态
 void Project_start(projects &P,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE);//启动立项
-void Office_add(string SC_id,set<string> E_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC);//科室增加(需要一名科长的ID与至少一名普通员工的ID)
-void Office_dismiss(string s_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC);//科室解散(需要科室ID)
+void Office_add(vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC);//科室增加(需要一名科长的ID与至少一名普通员工的ID)
+void Office_dismiss(string s_id,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC);//科室解散(需要科室ID)
+
+void Project_start(projects &P,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE)//启动立项
+{
+    string id;
+    cout<<"请输入项目ID:";
+    cin>>id;
+    if(!P.id_check(id))
+    {
+        cout<<"项目ID已存在,项目创建失败!"<<endl;
+        cout<<"请输入任意数字继续:";
+        cin>>id;
+        return;
+    }
+    string name;
+    cout<<"请输入项目名称:";
+    cin>>name;
+    string intro;
+    cout<<"请输入项目简介:";
+    cin>>intro;
+    double price;
+    cout<<"请输入项目资金:";
+    cin>>price;
+    for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
+        if((*i).get_p_id()=="")(*i).INF_print();
+    vector<string> pic_id,pic_name,s_id;
+    set<string> pic_id_check,s_id_check;
+    cout<<"以上是目前无正在进行项目的科长列表,请输入参与此项目的科长ID(输入0结束):"<<endl;
+    while(true)
+    {
+        string tmp;
+        cin>>tmp;
+        if(tmp[0]=='0')break;
+        pic_id.push_back(tmp);
+        pic_id_check.insert(tmp);
+    }
+    for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
+        if(pic_id_check.count((*i).get_p_id()))
+        {
+            (*i).project_start(id,name);
+            s_id.push_back((*i).get_s_id());
+            pic_name.push_back((*i).get_name());
+            s_id_check.insert((*i).get_s_id());
+        }
+    int nec=0,tec=0;
+    for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
+        if(s_id_check.count((*i).get_s_id()))(*i).project_start(id,name),nec++;
+    for(vector<temp_employee>::iterator i=TE.begin();i!=TE.end();i++)
+        if(s_id_check.count((*i).get_s_id()))(*i).project_start(id,name),tec++;
+    P.project_add(id,name,pic_name,pic_id,s_id,intro,pic_id.size()+nec+tec,0,false,price);
+    cout<<"立项成功!"<<endl;
+}
+
+void Office_dismiss(string s_id,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC)//科室解散(需要科室ID)
+{
+    for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
+        if((*i).get_s_id()==s_id)
+        {
+            if((*i).get_task_status())(*i).section_dismiss();
+            else
+            {
+                cout<<"科室现有工程尚未完成,无法解散!"<<endl;
+                cout<<"输入任意数字继续:";
+                getchar();
+                break;
+            }
+        }
+    for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
+        if((*i).get_s_id()==s_id)
+            (*i).section_dismiss();
+    for(vector<temp_employee>::iterator i=TE.begin();i!=TE.end();i++)
+        if((*i).get_s_id()==s_id)
+            (*i).section_dismiss();
+    cout<<"解散成功!"<<endl;
+    return;
+}
+
+void Office_add(vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC)//科室增加(需要一名科长的ID与至少一名普通员工的ID)
+{
+    string s_id;
+    cout<<"请输入新科室的科室ID:";
+    cin>>s_id;
+    for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
+        if((*i).get_s_id()==s_id)
+        {
+            cout<<"该科室ID已存在,科室创建失败!"<<endl;
+            cout<<"输入任意数字继续:";
+            cin>>s_id;
+            return;
+        }
+    string SC_id;
+    set<string> E_id;
+    for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
+        if((*i).get_s_id()=="")
+            (*i).INF_print();
+    cout<<"以上是目前尚未组建科室的科长,请输入其中一名科长的ID:";
+    cin>>SC_id;
+    for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
+        if((*i).get_s_id()=="")
+            (*i).INF_print();
+    for(vector<temp_employee>::iterator i=TE.begin();i!=TE.end();i++)
+        if((*i).get_s_id()=="")
+            (*i).INF_print();
+    cout<<"以上是尚未加入科室的普通雇员和临时雇员,请输入需要添加进新科室的员工的ID(输入0结束)::"<<endl;
+    while(true)
+    {
+        string tempid;
+        cin>>tempid;
+        if(tempid[0]='0')break;
+        E_id.insert(tempid);
+    }
+    for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
+        if((*i).get_p_id()==SC_id)
+        {
+            (*i).section_update(s_id);
+            break;
+        }
+    for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
+        if(E_id.count((*i).get_p_id()))
+            (*i).section_update(s_id);
+    for(vector<temp_employee>::iterator i=TE.begin();i!=TE.end();i++)
+        if(E_id.count((*i).get_p_id()))
+            (*i).section_update(s_id);
+    cout<<"科室创建成功!"<<endl;
+    return;
+}
+
+void project_end(string p_id,string gm_id,projects &P,stocks &S,vector<general_manager> &GM,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE)//结束任务并更新员工状态
+{
+    double p_price=P.get_price(p_id);
+    double s_price=S.get_sp();
+    if(P.project_over(p_id))
+    {
+        for(vector<general_manager>::iterator i=GM.begin();i!=GM.end();i++)
+        {
+            if((*i).get_id()==gm_id)
+                (*i).project_update(p_price,s_price);
+        }
+        for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
+        {
+            if((*i).get_p_id()==p_id)
+                (*i).project_update(p_price,s_price);
+        }
+        for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
+        {
+            if((*i).get_p_id()==p_id)
+                (*i).project_update(p_price,s_price);
+        }
+        for(vector<temp_employee>::iterator i=TE.begin();i!=TE.end();i++)
+        {
+            if((*i).get_p_id()==p_id)
+                (*i).project_update(p_price);
+        }
+    }
+    else return;
+}
+
+void TS_update(string s_id,projects &P,vector<normal_employee> NE,vector<temp_employee> TE)//工作状态更新
+{
+    int amount=0;
+    string p_id;
+    for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
+    {
+        if((*i).get_s_id()==s_id)
+        {
+            p_id=(*i).get_p_id();
+            if((*i).get_task_status())amount++;
+            else
+            {
+                cout<<"员工任务未全部完成,任务状态更新失败!"<<endl;
+                cout<<"请输入任意数字继续:";
+                cin>>amount;
+                return;
+            }
+        }
+    }
+    for(vector<temp_employee>::iterator i=TE.begin();i!=TE.end();i++)
+    {
+        if((*i).get_s_id()==s_id)
+        {
+            p_id=(*i).get_p_id();
+            if((*i).get_task_status())amount++;
+            else
+            {
+                cout<<"员工任务未全部完成,任务状态更新失败!"<<endl;
+                cout<<"请输入任意数字继续:";
+                cin>>amount;
+                return;
+            }
+        }
+    }
+    P.SC_update(p_id,amount+1);
+}
 
 void Stock_sale(string u_id,stocks &S,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM)//股票出售函数
 {
@@ -56,6 +248,14 @@ void Stock_sale(string u_id,stocks &S,vector<normal_employee> &NE,vector<section
                 {
                     (*i).stock_sale(amount);
                     S.stock_sale(u_id,amount);
+                    break;
+                }
+                else
+                {
+                    cout<<"持股不足,上架失败!"<<endl;
+                    cout<<"请输入任意数字继续:";
+                    cin>>amount;
+                    break;
                 }
             }
         }
@@ -66,7 +266,19 @@ void Stock_sale(string u_id,stocks &S,vector<normal_employee> &NE,vector<section
         {
             if((*i).get_id()==u_id)
             {
-
+                if(amount<=(*i).get_stock())
+                {
+                    (*i).stock_sale(amount);
+                    S.stock_sale(u_id,amount);
+                    break;
+                }
+                else
+                {
+                    cout<<"持股不足,上架失败!"<<endl;
+                    cout<<"请输入任意数字继续:";
+                    cin>>amount;
+                    break;
+                }
             }
         }
     }
@@ -76,7 +288,19 @@ void Stock_sale(string u_id,stocks &S,vector<normal_employee> &NE,vector<section
         {
             if((*i).get_id()==u_id)
             {
-
+                if(amount<=(*i).get_stock())
+                {
+                    (*i).stock_sale(amount);
+                    S.stock_sale(u_id,amount);
+                    break;
+                }
+                else
+                {
+                    cout<<"持股不足,上架失败!"<<endl;
+                    cout<<"请输入任意数字继续:";
+                    cin>>amount;
+                    break;
+                }
             }
         }
     }
