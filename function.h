@@ -23,10 +23,10 @@ bool admin_check();
 void admin_page();
 void login();
 void passwd();
-void temp_employee_page(string id);
-void normal_employee_page(string id);
-void section_chief_page(string id);
-void general_manager_page(string id);
+void temp_employee_page();
+void normal_employee_page();
+void section_chief_page();
+void general_manager_page();
 string enter_passwd();
 void employee_add();//员工添加
 void employee_delete();//员工删除

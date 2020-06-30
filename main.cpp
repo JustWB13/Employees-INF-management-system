@@ -290,13 +290,13 @@ int main()
                 main_page();
             }
         }
-            case 0:
-                return 0;
-            default:
-                cout << "该选项不存在！按任意键继续：" << endl;
-                getchar();
-                system("CLS");
-                main_page();
+        else if (n==0)return 0;
+        else
+        {
+            cout << "该选项不存在！按任意键继续：" << endl;
+            getchar();
+            system("CLS");
+            main_page();
         }
     }
 }
