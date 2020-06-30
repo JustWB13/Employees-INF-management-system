@@ -34,9 +34,14 @@ general_manager::general_manager(string ID,string NAME,string SEX,string PHONE_N
     cur_stock=CUR_STOCK;
 }
 int employee::get_hash(){return hash;}//返回密码的哈希值
-string employee::get_name(){return name;}
-string temp_employee::get_p_id(){return p_id;}
-string employee::get_id() {return id;}
+string employee::get_name(){return name;}//返回员工姓名
+string temp_employee::get_p_id(){return p_id;}//返回项目ID
+string employee::get_id() {return id;}//返回员工ID
+double employee::get_cur_wage() {return cur_wage;}//获取员工工资
+int normal_employee::get_stock(){return cur_stock;}//获取持股数
+int general_manager::get_stock(){return cur_stock;}
+void normal_employee::stock_sale(int amount){cur_wage-=amount;}//股票卖出
+void general_manager::stock_sale(int amount){cur_wage-=amount;}
 void temp_employee::INF_print()
 {
     cout<<"----------------"<<endl;
@@ -104,4 +109,22 @@ void general_manager::INF_print()
         <<"员工底薪:"<<wage<<endl
         <<"员工现有工资:"<<cur_wage<<endl;
     cout<<"----------------"<<endl;
+}
+void employee::inf_change(string NAME, string SEX, string PHONE_NUMBER)
+{
+    if(NAME[0]!='1')name=NAME;
+    if(SEX[0]!='1')sex=SEX;
+    if(PHONE_NUMBER[0]!='1')phone_number=PHONE_NUMBER;
+}
+void normal_employee::stock_buy(double price,double stock_price)
+{
+    int amount=(price/stock_price);
+    cur_stock+=amount;
+    cur_wage-=price;
+}
+void general_manager::stock_buy(double price, double stock_price)
+{
+    int amount=(price/stock_price);
+    cur_stock+=amount;
+    cur_wage-=price;
 }

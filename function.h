@@ -30,17 +30,172 @@ void general_manager_page();
 string enter_passwd();
 void employee_add(set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工添加
 void employee_delete(stocks &S,projects &P,set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工删除
-void INF_change(string u_id,set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工信息修改
+void INF_change(string u_id,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工信息修改
 void INF_search(string u_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC,vector<general_manager> GM);//员工信息查询
-void wage_statistic();//员工工资统计
-void Stock_show();//查看当前股票交易情况
-void Stock_get();//股票购买
-void Stock_sale();//股票出售
+void wage_statistic(vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC,vector<general_manager> GM);//员工工资统计
+void Stock_get(string u_id,stocks &S,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//股票购买
+void Stock_sale(string u_id,stocks &S,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//股票出售
 void TS_update(string s_id,vector<normal_employee> NE,vector<temp_employee> TE);//工作状态更新
 void INF_update(string p_id,projects &P);//结束项目
-void Project_start(vector<section_chief> SC,projects &P);//启动立项
+void Project_start(projects &P,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE);//启动立项
 void Office_add(string SC_id,set<string> E_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC);//科室增加(需要一名科长的ID与至少一名普通员工的ID)
 void Office_dismiss(string s_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC);//科室解散(需要科室ID)
+
+void Stock_sale(string u_id,stocks &S,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM)//股票出售
+{
+    int amount;
+    cout<<"请输入卖出数量:";
+    cin>>amount;
+    if(u_id[0]=='1')
+    {
+        for(vector<general_manager>::iterator i=GM.begin();i!=GM.end();i++)
+        {
+            if((*i).get_id()==u_id)
+            {
+                if(amount<=(*i).get_stock())
+                {
+                    (*i).stock_sale(amount);
+                    S.stock_sale(u_id,amount);
+                }
+            }
+        }
+    }
+    else if(u_id[0]=='2')
+    {
+        for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
+        {
+            if((*i).get_id()==u_id)
+            {
+
+            }
+        }
+    }
+    else if(u_id[0=='3')
+    {
+        for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
+        {
+            if((*i).get_id()==u_id)
+            {
+
+            }
+        }
+    }
+}
+
+void Stock_get(string u_id,stocks &S,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM)//股票购买
+{
+    string st_id;
+    cout<<"请输入交易ID:";
+    cin>>st_id;
+    if(u_id[0]=='1')
+    {
+        for(vector<general_manager>::iterator i=GM.begin();i!=GM.end();i++)
+        {
+            if((*i).get_id()==u_id)
+            {
+                double price=S.stock_buy(st_id,(*i).get_cur_wage());
+                if(price==-1)return;
+                (*i).stock_buy(price,S.get_sp());
+                break;
+            }
+        }
+    }
+    else if(u_id[0]=='2')
+    {
+        for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
+        {
+            if((*i).get_id()==u_id)
+            {
+                double price=S.stock_buy(st_id,(*i).get_cur_wage());
+                if(price==-1)return;
+                (*i).stock_buy(price,S.get_sp());
+                break;
+            }
+        }
+    }
+    else if(u_id[0]=='3')
+    {
+        for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
+        {
+            if((*i).get_id()==u_id)
+            {
+                double price=S.stock_buy(st_id,(*i).get_cur_wage());
+                if(price==-1)return;
+                (*i).stock_buy(price,S.get_sp());
+                break;
+            }
+        }
+    }
+}
+
+void wage_statistic(vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC,vector<general_manager> GM)//员工工资统计
+{
+    double te=0,ne=0,sc=0,gm=0;
+    for(vector<general_manager>::iterator i=GM.begin();i!=GM.end();i++)gm+=(*i).get_cur_wage();
+    for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)gm+=(*i).get_cur_wage();
+    for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)gm+=(*i).get_cur_wage();
+    for(vector<temp_employee>::iterator i=TE.begin();i!=TE.end();i++)gm+=(*i).get_cur_wage();
+    cout<<"总经理现有平均工资:"<<(gm/GM.size())<<endl;
+    cout<<"科长现有平均工资:"<<(sc/SC.size())<<endl;
+    cout<<"普通雇员现有工资:"<<(ne/NE.size())<<endl;
+    cout<<"临时雇员现有工资:"<<(te/TE.size())<<endl;
+    cout<<"全体员工现有平均工资:"<<((te+ne+sc+gm)/(GM.size()+SC.size()+NE.size()+TE.size()))<<endl;
+}
+
+void INF_change(string u_id,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM)//员工信息修改
+{
+    string name,sex,phone_number;
+    cout<<"请输入更改后姓名(若无需修改则输入1):";
+    cin>>name;
+    cout<<"请输入更改后性别(若无需修改则输入1):";
+    cin>>sex;
+    cout<<"请输入更改后电话号码(若无需修改则输入1):";
+    cin>>phone_number;
+    if(u_id[0]=='1')
+    {
+        for (vector<general_manager>::iterator i = GM.begin(); i != GM.end(); i++)
+        {
+            if ((*i).get_id() == u_id)
+            {
+                (*i).inf_change(name, sex, phone_number);
+                break;
+            }
+        }
+    }
+    else if(u_id[0]=='2')
+    {
+        for (vector<section_chief>::iterator i = SC.begin(); i != SC.end(); i++)
+        {
+            if ((*i).get_id() == u_id)
+            {
+                (*i).inf_change(name, sex, phone_number);
+                break;
+            }
+        }
+    }
+    else if(u_id[0]=='3')
+    {
+        for (vector<normal_employee>::iterator i = NE.begin(); i != NE.end(); i++)
+        {
+            if ((*i).get_id() == u_id)
+            {
+                (*i).inf_change(name, sex, phone_number);
+                break;
+            }
+        }
+    }
+    else if(u_id[0]=='4')
+    {
+        for (vector<temp_employee>::iterator i = TE.begin(); i != TE.end(); i++)
+        {
+            if ((*i).get_id() == u_id)
+            {
+                (*i).inf_change(name, sex, phone_number);
+                break;
+            }
+        }
+    }
+}
 
 void INF_search(string u_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC,vector<general_manager> GM)//员工信息查询
 {

@@ -3,11 +3,12 @@
 //
 
 #include "stock.h"
-stocks::stock::stock(bool STATUS,int AMOUNT,string USER_ID,double PRICE)
+stocks::stock::stock(bool STATUS,int AMOUNT,string USER_ID,string ST_ID,double PRICE)
 {
     status=STATUS;
     amount=AMOUNT;
     user_ID=USER_ID;
+    st_id=ST_ID;
     price=PRICE;
 }
 void stocks::show(bool admin_tag)
@@ -17,6 +18,7 @@ void stocks::show(bool admin_tag)
         stock tmp=(*i);
         if(tmp.status)
             if(!admin_tag)continue;
+        cout<<"订单ID:"<<tmp.st_id<<endl;
         cout<<"状态:";
         if(admin_tag)
             if(tmp.status)cout<<"已出售";
@@ -41,3 +43,39 @@ void stocks::delete_update(string u_id)
         }
     }
 }
+double stocks::stock_buy(string ST_ID, double money)
+{
+    for(vector<stock>::iterator i=a.begin();i!=a.end();i++)
+    {
+        stock tmp=(*i);
+        if(tmp.status)continue;
+        if(tmp.st_id==ST_ID)
+        {
+            if(money>=stock_price*tmp.amount)
+            {
+                (*i).price=tmp.amount*stock_price;
+                (*i).status=true;
+                return (*i).price;
+            }
+            else
+            {
+                cout<<"余额不足,购买失败!"<<endl;
+                return -1;
+            }
+        }
+    }
+    cout<<"ID不存在,购买失败!"<<endl;
+    return -1;
+}
+int stocks::stock_sale(string u_id, int amount)
+{
+    int tmp=++st_amount;
+    string st_id;
+    char orz[10];
+    for(int i=0;tmp!=0;tmp>>=1,i++)
+    {
+        orz[i]=(tmp%10+'0');
+    }
+    a.push_back(stock(false,amount,u_id,,0));
+}
+double stocks::get_sp() {return stock_price;}

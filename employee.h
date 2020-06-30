@@ -22,6 +22,8 @@ public:
     string get_name();
     string get_id();
     virtual void INF_print()=0;
+    void inf_change(string NAME,string SEX,string PHONE_NUMBER);
+    double get_cur_wage();
 };
 
 class temp_employee: public employee//临时工
@@ -42,6 +44,9 @@ protected:
 public:
     normal_employee(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,int WAGE,int CUR_WAGE,int CUR_STOCK);
     virtual void INF_print();
+    void stock_buy(double price,double stock_price);
+    void stock_sale(int amount);
+    int get_stock();
 };
 
 class section_chief: public normal_employee//科长
@@ -59,4 +64,7 @@ protected:
 public:
     general_manager(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,int WAGE,int CUR_WAGE,int CUR_STOCK);
     virtual void INF_print();
+    void stock_buy(double price,double stock_price);
+    void stock_sale(int amount);
+    int get_stock();
 };
