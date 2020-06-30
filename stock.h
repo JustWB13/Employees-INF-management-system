@@ -28,6 +28,7 @@ public:
     stocks();
     ~stocks();
     void show(bool admin_tag);
+    void delete_update(string u_id);
 };
 
 

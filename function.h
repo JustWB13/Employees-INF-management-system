@@ -28,10 +28,10 @@ void normal_employee_page(string id);
 void section_chief_page(string id);
 void general_manager_page(string id);
 string enter_passwd();
-void employee_add(set<string> id_check,vector<temp_employee> &a,vector<normal_employee> &b,vector<section_chief> &c,vector<general_manager> &d);//员工添加
-void employee_delete(projects &P,vector<temp_employee> &a,vector<normal_employee> &b,vector<section_chief> &c,vector<general_manager> &d);//员工删除
-void INF_change();//员工信息修改
-void INF_search();//员工信息查询
+void employee_add(set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工添加
+void employee_delete(stocks &S,projects &P,set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工删除
+void INF_change(string u_id,set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工信息修改
+void INF_search(string u_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC,vector<general_manager> GM);//员工信息查询
 void wage_statistic();//员工工资统计
 void Stock_show();//查看当前股票交易情况
 void Stock_get();//股票购买
@@ -42,46 +42,113 @@ void Project_start(vector<section_chief> SC,projects &P);//启动立项
 void Office_add(string SC_id,set<string> E_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC);//科室增加(需要一名科长的ID与至少一名普通员工的ID)
 void Office_dismiss(string s_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC);//科室解散(需要科室ID)
 
-void employee_delete(projects &P,vector<temp_employee> &a,vector<normal_employee> &b,vector<section_chief> &c,vector<general_manager> &d)//员工删除
+void INF_search(string u_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC,vector<general_manager> GM)//员工信息查询
 {
-    string id;
-    cout<<"请输入要删除的用户ID:";
-    cin>>id;
-    for(vector<temp_employee>::iterator i=a.begin();i!=a.end();i++)
+    if(u_id[0]=='1')//总经理
     {
-        temp_employee tmp=(*i);
-        if(tmp.get_id()==id)
+        for(vector<general_manager>::iterator i=GM.begin();i!=GM.end();i++)
         {
-
+            if(u_id==(*i).get_id())
+            {
+                (*i).INF_print();
+                break;
+            }
         }
     }
-    for(vector<normal_employee>::iterator i=b.begin();i!=b.end();i++)
+    else if(u_id[0]=='2')//科长
     {
-        normal_employee tmp=(*i);
-        if(tmp.get_id()==id)
+        for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
         {
-
+            if(u_id==(*i).get_id())
+            {
+                (*i).INF_print();
+                break;
+            }
         }
     }
-    for(vector<section_chief>::iterator i=c.begin();i!=c.end();i++)
+    else if(u_id[0]=='3')//普通雇员
     {
-        section_chief tmp=(*i);
-        if(tmp.get_id()==id)
+        for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
         {
-
+            if(u_id==(*i).get_id())
+            {
+                (*i).INF_print();
+                break;
+            }
         }
     }
-    for(vector<general_manager>::iterator i=d.begin();i!=d.end();i++)
+    else if(u_id[0]=='4')//临时工
     {
-        general_manager tmp=(*i);
-        if(tmp.get_id()==id)
+        for(vector<temp_employee>::iterator i=TE.begin();i!=TE.end();i++)
         {
-
+            if(u_id==(*i).get_id())
+            {
+                (*i).INF_print();
+                break;
+            }
         }
     }
 }
 
-void employee_add(set<string> id_check,vector<temp_employee> &a,vector<normal_employee> &b,vector<section_chief> &c,vector<general_manager> &d)//员工添加
+void employee_delete(stocks &S,projects &P,set<string> &id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM)//员工删除
+{
+    string id;
+    cout<<"请输入要删除的用户ID:";
+    cin>>id;
+    if(!id_check.count(id))
+    {
+        cout<<"id不存在!"<<endl;
+        cout<<"输入任意数字继续:";
+        cin>>id;
+        return;
+    }
+    for(vector<temp_employee>::iterator i=TE.begin();i!=TE.end();i++)
+    {
+        temp_employee tmp=(*i);
+        if(tmp.get_id()==id)
+        {
+            P.delete_update(tmp.get_p_id());
+            S.delete_update(tmp.get_id());
+            TE.erase(i);
+            break;
+        }
+    }
+    for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
+    {
+        normal_employee tmp=(*i);
+        if(tmp.get_id()==id)
+        {
+            P.delete_update(tmp.get_p_id());
+            S.delete_update(tmp.get_id());
+            NE.erase(i);
+            break;
+        }
+    }
+    for(vector<section_chief>::iterator i=SC.begin();i!=SC.end();i++)
+    {
+        section_chief tmp=(*i);
+        if(tmp.get_id()==id)
+        {
+            P.delete_update(tmp.get_p_id());
+            S.delete_update(tmp.get_id());
+            SC.erase(i);
+            break;
+        }
+    }
+    for(vector<general_manager>::iterator i=GM.begin();i!=GM.end();i++)
+    {
+        general_manager tmp=(*i);
+        if(tmp.get_id()==id)
+        {
+            S.delete_update(tmp.get_id());
+            GM.erase(i);
+            break;
+        }
+    }
+    id_check.erase(id);
+}
+
+void employee_add(set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM)//员工添加
 {
     int opt;
     cout<<"请选择注册用户类型:"<<endl
@@ -110,7 +177,7 @@ void employee_add(set<string> id_check,vector<temp_employee> &a,vector<normal_em
         cin>>sex;
         cout<<"请输入用户手机号:";
         cin>>phone_number;
-        d.push_back(general_manager(id,name,sex,phone_number,-1,12000,0,0));
+        GM.push_back(general_manager(id,name,sex,phone_number,-1,12000,0,0));
     }
     else if(opt==2)
     {
@@ -131,7 +198,7 @@ void employee_add(set<string> id_check,vector<temp_employee> &a,vector<normal_em
         cin>>sex;
         cout<<"请输入用户手机号:";
         cin>>phone_number;
-        c.push_back(section_chief(id,name,sex,phone_number,"","","",-1,8000,0,0));
+        SC.push_back(section_chief(id,name,sex,phone_number,"","","",-1,8000,0,0));
     }
     else if(opt==3)
     {
@@ -152,7 +219,7 @@ void employee_add(set<string> id_check,vector<temp_employee> &a,vector<normal_em
         cin>>sex;
         cout<<"请输入用户手机号:";
         cin>>phone_number;
-        b.push_back(normal_employee(id,name,sex,phone_number,"","","",-1,5000,0,0));
+        NE.push_back(normal_employee(id,name,sex,phone_number,"","","",-1,5000,0,0));
     }
     else if(opt==4)
     {
@@ -173,7 +240,7 @@ void employee_add(set<string> id_check,vector<temp_employee> &a,vector<normal_em
         cin>>sex;
         cout<<"请输入用户手机号:";
         cin>>phone_number;
-        a.push_back(temp_employee(id,name,sex,phone_number,"","","",-1,3000,0));
+        TE.push_back(temp_employee(id,name,sex,phone_number,"","","",-1,3000,0));
     }
     cout<<"用户创建成功!"<<endl;
     cout<<"输入任意数字返回:";

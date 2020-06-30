@@ -29,3 +29,15 @@ void stocks::show(bool admin_tag)
         else cout<<"成交价格:"<<tmp.price<<endl;
     }
 }
+void stocks::delete_update(string u_id)
+{
+    for(vector<stock>::iterator i=a.begin();i!=a.end();i++)
+    {
+        stock tmp=(*i);
+        if(tmp.user_ID==u_id)
+        {
+            a.erase(i);
+            break;
+        }
+    }
+}
