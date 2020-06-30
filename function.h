@@ -41,7 +41,7 @@ void Project_start(projects &P,vector<section_chief> &SC,vector<normal_employee>
 void Office_add(string SC_id,set<string> E_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC);//科室增加(需要一名科长的ID与至少一名普通员工的ID)
 void Office_dismiss(string s_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC);//科室解散(需要科室ID)
 
-void Stock_sale(string u_id,stocks &S,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM)//股票出售
+void Stock_sale(string u_id,stocks &S,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM)//股票出售函数
 {
     int amount;
     cout<<"请输入卖出数量:";
