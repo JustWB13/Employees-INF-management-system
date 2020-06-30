@@ -16,6 +16,7 @@ int main()
     int n;
     bool flag=false;
     main_page();
+    employee_load(GM,SC,NE,TE);
     while(true)
     {
         cin>>n;
@@ -383,7 +384,11 @@ int main()
                 main_page();
             }
         }
-        else if (n==0)return 0;
+        else if (n==0)
+        {
+            employee_write(GM,SC,NE,TE);
+            return 0;
+        }
         else
         {
             cout << "该选项不存在！按任意键继续：" << endl;

@@ -136,7 +136,7 @@ void employee_load(vector<general_manager> &GM,vector<section_chief> &SC,vector<
     for(int i=1;i<=n;i++)
     {
         load>>id>>name>>sex>>phone_number>>hash>>wage>>cur_wage>>p_name>>p_id>>s_id>>task_status>>cur_stock;
-        NE.push_back(normal_employee(id,name,sex,phone_number,p_name,p_id,s_id,hash,wage,cur_wage,cur_stock))
+        NE.push_back(normal_employee(id,name,sex,phone_number,p_name,p_id,s_id,hash,wage,cur_wage,cur_stock));
     }
     load.close();
     load.open("SC.txt",ios::in);
