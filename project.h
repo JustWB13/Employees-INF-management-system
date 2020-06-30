@@ -21,11 +21,13 @@ protected:
         string intro;
         int E_amount,E_accomplished;
         bool status;
-        project(string P_ID,string P_NAME,vector<string> PIC_NAME,vector<string> PIC_ID,vector<string> S_ID,string INTRO,int E_AMOUNT,int E_ACCOMPLISHED,bool STATUS);
+        double price;
+        project(string P_ID,string P_NAME,vector<string> PIC_NAME,vector<string> PIC_ID,vector<string> S_ID,string INTRO,int E_AMOUNT,int E_ACCOMPLISHED,bool STATUS,double PRICE);
     };
     vector<project> a;
 public:
     projects();
     ~projects();
     void show_ROP(string P_ID);//rate of progress
+    void delete_update(string p_id);
 };
