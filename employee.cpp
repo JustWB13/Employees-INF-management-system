@@ -51,6 +51,7 @@ void section_chief::project_update(double p_price,double s_price){p_id="";p_name
 void general_manager::project_update(double p_price, double s_price){cur_wage+=(wage+p_price*0.5+s_price*cur_stock*0.1);}//总经理
 void temp_employee::section_update(string S_ID){s_id=S_ID;}//科室信息更新
 void temp_employee::section_dismiss(){s_id="";}//科室解散员工信息更新
+void employee::hash_update(int HASH){hash=HASH;}
 void temp_employee::INF_print()
 {
     cout<<"----------------"<<endl;

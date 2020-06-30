@@ -26,6 +26,7 @@ public:
     virtual void INF_print()=0;
     void inf_change(string NAME,string SEX,string PHONE_NUMBER);
     double get_cur_wage();
+    void hash_update(int HASH);
 };
 
 class temp_employee: public employee//临时工
@@ -45,6 +46,23 @@ public:
     void project_start(string P_ID,string P_NAME);
     virtual void INF_print();
 };
+
+/*
+ 临时工文件结构
+ 总临时工数n
+ id
+ name
+ sex
+ phone_number
+ hash
+ wage
+ cur_wage
+ p_name
+ p_id
+ s_id
+ task_status
+ ...*n
+ */
 
 class normal_employee: public temp_employee//普通员工
 {
