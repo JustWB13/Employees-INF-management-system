@@ -27,7 +27,7 @@ void stocks::show(bool admin_tag)
         cout<<"出售者ID:"<<tmp.user_ID<<endl;
         cout<<"数量:"<<tmp.amount<<endl;
         cout.precision(2);
-        if(!tmp.status)cout<<"价格:"<<stock_price<<endl;
+        if(!tmp.status)cout<<"价格:"<<STOCK_PRICE<<endl;
         else cout<<"成交价格:"<<tmp.price<<endl;
     }
 }
@@ -51,9 +51,9 @@ double stocks::stock_buy(string ST_ID, double money)
         if(tmp.status)continue;
         if(tmp.st_id==ST_ID)
         {
-            if(money>=stock_price*tmp.amount)
+            if(money>=STOCK_PRICE*tmp.amount)
             {
-                (*i).price=tmp.amount*stock_price;
+                (*i).price=tmp.amount*STOCK_PRICE;
                 (*i).status=true;
                 cout<<"购买成功!"<<endl;
                 return (*i).price;
@@ -70,10 +70,10 @@ double stocks::stock_buy(string ST_ID, double money)
 }
 int stocks::stock_sale(string u_id, int amount)
 {
-    a.push_back(stock(false,amount,u_id,to_string(++st_amount),0));
+    a.push_back(stock(false,amount,u_id,to_string(++ST_AMOUNT),0));
     cout<<"已成功上架!"<<endl;
 }
-double stocks::get_sp() {return stock_price;}
+double stocks::get_sp() {return STOCK_PRICE;}
 stocks::stocks()
 {
     ifstream load;
@@ -83,7 +83,7 @@ stocks::stocks()
     int amount;
     double price;
     string user_id,st_id;
-    load>>stock_price>>st_amount>>n;
+    load>>STOCK_PRICE>>ST_AMOUNT>>n;
     for(int i=1;i<=n;i++)
     {
         load>>status>>amount>>price>>user_id>>st_id;
@@ -94,7 +94,7 @@ stocks::~stocks()
 {
     ofstream save;
     save.open("stocks.txt",ios::out);
-    save<<stock_price<<endl<<st_amount<<endl;
+    save<<STOCK_PRICE<<endl<<ST_AMOUNT<<endl;
     int n=a.size();
     save<<n<<endl;
     for(int i=0;i<n;i++)

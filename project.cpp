@@ -103,7 +103,7 @@ projects::projects()
     int n;
     string p_id,p_name;
     int m;
-    vector<string> pic_name,pic_id,s_id:
+    vector<string> pic_name,pic_id,s_id;
     string intro;
     int E_amount,E_accomplished;
     bool status;

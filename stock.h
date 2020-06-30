@@ -29,8 +29,8 @@ using namespace std;
 class stocks
 {
 protected:
-    static double stock_price;
-    static int st_amount;
+    static double STOCK_PRICE;
+    static int ST_AMOUNT;
     struct stock
     {
         bool status;
