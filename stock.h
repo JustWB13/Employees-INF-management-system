@@ -7,6 +7,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<set>
 using namespace std;
 #endif //EMPLOYEES_INF_MANAGEMENT_SYSTEM
 

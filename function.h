@@ -8,6 +8,7 @@
 #include<vector>
 #include<string>
 #include<cstdlib>
+#include<set>
 using namespace std;
 #endif //EMPLOYEES_INF_MANAGEMENT_SYSTEM
 
@@ -27,19 +28,19 @@ void normal_employee_page(string id);
 void section_chief_page(string id);
 void general_manager_page(string id);
 string enter_passwd();
-void employee_add();
-void employee_delete();
-void INF_change();
-void INF_search();
-void wage_statistic();
-void Stock_show();
-void Stock_get();
-void Stock_sale();
-void TS_update();
-void INF_update();
-void Project_start();
-void Office_add();
-void Office_dismiss();
+void employee_add();//员工添加
+void employee_delete();//员工删除
+void INF_change();//员工信息修改
+void INF_search();//员工信息查询
+void wage_statistic();//员工工资统计
+void Stock_show();//查看当前股票交易情况
+void Stock_get();//股票购买
+void Stock_sale();//股票出售
+void TS_update(string s_id,vector<normal_employee> NE,vector<temp_employee> TE);//工作状态更新
+void INF_update(string p_id,projects &P);//结束项目
+void Project_start(vector<section_chief> SC,projects &P);//启动立项
+void Office_add(string SC_id,set<string> E_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC);//科室增加(需要一名科长的ID与至少一名普通员工的ID)
+void Office_dismiss(string s_id,vector<temp_employee> TE,vector<normal_employee> NE,vector<section_chief> SC);//科室解散(需要科室ID)
 
 inline int BKDRHash(string a)
 {
