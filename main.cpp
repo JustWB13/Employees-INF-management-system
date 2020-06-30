@@ -1,7 +1,7 @@
 //
 // Created by 吴波 on 2020/6/22.
 //
-#include "function.h"
+#include "function.h"//test
 int main()
 {
     int n;
