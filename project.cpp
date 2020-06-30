@@ -50,3 +50,49 @@ void projects::show_ROP(string P_ID)
         }
     }
 }
+void projects::SC_update(string P_ID, int amount)
+{
+    for(vector<project>::iterator i=a.begin();i!=a.end();i++)
+    {
+        if((*i).p_id==P_ID)
+        {
+            (*i).E_accomplished+=amount;
+            return;
+        }
+    }
+}
+bool projects::project_over(string P_ID)
+{
+    for(vector<project>::iterator i=a.begin();i!=a.end();i++)
+    {
+        if((*i).p_id==P_ID)
+        {
+            if((*i).E_accomplished==(*i).E_amount)
+            {
+                (*i).status=true;
+                cout<<"工程已确认结束!"<<endl;
+                return true;
+            }
+            else
+            {
+                cout<<"工程尚未完成!"<<endl;
+                return false;
+            }
+        }
+    }
+}
+double projects::get_price(string p_id)
+{
+    for(vector<project>::iterator i=a.begin();i!=a.end();i++)
+    {
+        if((*i).p_id==p_id)
+            return (*i).price;
+    }
+}
+bool projects::id_check(string p_id)
+{
+    for(vector<project>::iterator i=a.begin();i!=a.end();i++)
+        if((*i).p_id==p_id)return false;
+    return true;
+}
+void projects::project_add(string id, string name, vector<string> PIC_NAME, vector<string> PIC_ID, vector<string> S_ID, string INTRO, int E_AMOUNT, int E_ACCOMPLISHED, bool STATUS, double PRICE){a.push_back(project(id,name,PIC_NAME,PIC_ID,S_ID,INTRO,E_AMOUNT,E_ACCOMPLISHED,false,PRICE));}

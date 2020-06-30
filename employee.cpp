@@ -34,14 +34,23 @@ general_manager::general_manager(string ID,string NAME,string SEX,string PHONE_N
     cur_stock=CUR_STOCK;
 }
 int employee::get_hash(){return hash;}//返回密码的哈希值
+bool temp_employee::get_task_status(){return task_status;}
 string employee::get_name(){return name;}//返回员工姓名
 string temp_employee::get_p_id(){return p_id;}//返回项目ID
+string temp_employee::get_s_id(){return s_id;}//返回科室ID
 string employee::get_id() {return id;}//返回员工ID
 double employee::get_cur_wage() {return cur_wage;}//获取员工工资
 int normal_employee::get_stock(){return cur_stock;}//获取持股数
 int general_manager::get_stock(){return cur_stock;}
 void normal_employee::stock_sale(int amount){cur_wage-=amount;}//股票卖出
 void general_manager::stock_sale(int amount){cur_wage-=amount;}
+void temp_employee::task_confirm(){task_status=true;}//确认任务完成
+void temp_employee::project_update(double p_price){p_id="";p_name="";cur_wage+=(wage+p_price*0.125)}//工程结束后临时工信息更新
+void normal_employee::project_update(double p_price,double s_price){p_id="";p_name="";cur_wage+=(wage+p_price*0.125+s_price*cur_stock*0.1);}//工程结束后普通雇员信息更新
+void section_chief::project_update(double p_price,double s_price){p_id="";p_name="";cur_wage+=(wage+p_price*0.25+s_price*cur_stock*0.1);}//科长
+void general_manager::project_update(double p_price, double s_price){cur_wage+=(wage+p_price*0.5+s_price*cur_stock*0.1);}//总经理
+void temp_employee::section_update(string S_ID){s_id=S_ID;}//科室信息更新
+void temp_employee::section_dismiss(){s_id="";}//科室解散员工信息更新
 void temp_employee::INF_print()
 {
     cout<<"----------------"<<endl;
@@ -127,4 +136,10 @@ void general_manager::stock_buy(double price, double stock_price)
     int amount=(price/stock_price);
     cur_stock+=amount;
     cur_wage-=price;
+}
+void temp_employee::project_start(string P_ID, string P_NAME)
+{
+    p_id=P_ID;
+    p_name=P_NAME;
+    task_status=false;
 }

@@ -55,6 +55,7 @@ double stocks::stock_buy(string ST_ID, double money)
             {
                 (*i).price=tmp.amount*stock_price;
                 (*i).status=true;
+                cout<<"购买成功!"<<endl;
                 return (*i).price;
             }
             else
@@ -69,13 +70,7 @@ double stocks::stock_buy(string ST_ID, double money)
 }
 int stocks::stock_sale(string u_id, int amount)
 {
-    int tmp=++st_amount;
-    string st_id;
-    char orz[10];
-    for(int i=0;tmp!=0;tmp>>=1,i++)
-    {
-        orz[i]=(tmp%10+'0');
-    }
-    a.push_back(stock(false,amount,u_id,,0));
+    a.push_back(stock(false,amount,u_id,to_string(++st_amount),0));
+    cout<<"已成功上架!"<<endl;
 }
 double stocks::get_sp() {return stock_price;}

@@ -34,6 +34,13 @@ protected:
 public:
     temp_employee(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,int WAGE,int CUR_WAGE);
     string get_p_id();
+    string get_s_id();
+    bool get_task_status();
+    void task_confirm();
+    virtual void project_update(double p_price);
+    void section_update(string S_ID);
+    void section_dismiss();
+    void project_start(string P_ID,string P_NAME);
     virtual void INF_print();
 };
 
@@ -47,6 +54,7 @@ public:
     void stock_buy(double price,double stock_price);
     void stock_sale(int amount);
     int get_stock();
+    virtual void project_update(double p_price,double s_price);
 };
 
 class section_chief: public normal_employee//科长
@@ -55,6 +63,7 @@ protected:
 public:
     section_chief(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,int WAGE,int CUR_WAGE,int CUR_STOCK);
     virtual void INF_print();
+    virtual void project_update(double p_price,double s_price);
 };
 
 class general_manager: public employee//总经理
@@ -67,4 +76,5 @@ public:
     void stock_buy(double price,double stock_price);
     void stock_sale(int amount);
     int get_stock();
+    void project_update(double p_price,double s_price);
 };
