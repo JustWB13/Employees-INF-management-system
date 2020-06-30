@@ -17,9 +17,10 @@ class employee
 {
 protected:
     string id,name,sex,phone_number;
-    int hash,wage,cur_wage;
+    int hash;
+    double wage,cur_wage;
 public:
-    employee(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,int WAGE,int CUR_WAGE);
+    employee(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,double WAGE,double CUR_WAGE);
     int get_hash();
     string get_name();
     string get_id();
@@ -27,6 +28,9 @@ public:
     void inf_change(string NAME,string SEX,string PHONE_NUMBER);
     double get_cur_wage();
     void hash_update(int HASH);
+    string get_sex();
+    string get_phone_number();
+    double get_wage();
 };
 
 class temp_employee: public employee//临时工
@@ -35,7 +39,7 @@ protected:
     string p_name,p_id,s_id;
     bool task_status;
 public:
-    temp_employee(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,int WAGE,int CUR_WAGE);
+    temp_employee(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,double WAGE,double CUR_WAGE);
     string get_p_id();
     string get_s_id();
     bool get_task_status();
@@ -45,6 +49,7 @@ public:
     void section_dismiss();
     void project_start(string P_ID,string P_NAME);
     virtual void INF_print();
+    string get_p_name();
 };
 
 /*
@@ -69,7 +74,7 @@ class normal_employee: public temp_employee//普通员工
 protected:
     int cur_stock;
 public:
-    normal_employee(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,int WAGE,int CUR_WAGE,int CUR_STOCK);
+    normal_employee(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,double WAGE,double CUR_WAGE,int CUR_STOCK);
     virtual void INF_print();
     void stock_buy(double price,double stock_price);
     void stock_sale(int amount);
@@ -77,24 +82,73 @@ public:
     virtual void project_update(double p_price,double s_price);
 };
 
+/*
+ 普通雇员文件结构
+ 普通雇员总数n
+ id
+ name
+ sex
+ phone_number
+ hash
+ wage
+ cur_wage
+ p_name
+ p_id
+ s_id
+ task_status
+ cur_stock
+ ...*n
+ */
+
 class section_chief: public normal_employee//科长
 {
 protected:
 public:
-    section_chief(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,int WAGE,int CUR_WAGE,int CUR_STOCK);
+    section_chief(string ID,string NAME,string SEX,string PHONE_NUMBER,string P_NAME,string P_ID,string S_ID,int HASH,double WAGE,double CUR_WAGE,int CUR_STOCK);
     virtual void INF_print();
     virtual void project_update(double p_price,double s_price);
 };
+
+/*
+ 科长文件结构
+ 科长总数n
+ id
+ name
+ sex
+ phone_number
+ hash
+ wage
+ cur_wage
+ p_name
+ p_id
+ s_id
+ task_status
+ cur_stock
+ ...*n
+ */
 
 class general_manager: public employee//总经理
 {
 protected:
     int cur_stock;
 public:
-    general_manager(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,int WAGE,int CUR_WAGE,int CUR_STOCK);
+    general_manager(string ID,string NAME,string SEX,string PHONE_NUMBER,int HASH,double WAGE,double CUR_WAGE,int CUR_STOCK);
     virtual void INF_print();
     void stock_buy(double price,double stock_price);
     void stock_sale(int amount);
     int get_stock();
     void project_update(double p_price,double s_price);
 };
+
+/*
+ 总经理文件结构
+ 总经理总数n
+ id
+ name
+ sex
+ phone_number
+ hash
+ wage
+ cur_wage
+ cur_stock
+ */
