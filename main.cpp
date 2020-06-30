@@ -27,7 +27,7 @@ int main()
                     else if (n == 3)INF_change();
                     else if (n == 4)INF_search();
                     else if (n == 5)wage_statistic();
-                    else if (n == 6)Stock_show();
+                    else if (n == 6)stocks::show();
                     else if (n == 0)
                     {
                         system("CLS");
@@ -82,7 +82,7 @@ int main()
                                 cin >> n;
                                 if (n == 1)INF_search();
                                 else if (n == 2)INF_change();
-                                else if (n == 3){Stock_show();Stock_get();}
+                                else if (n == 3){stocks::show();Stock_get();}
                                 else if (n == 4)Stock_sale();
                                 else if (n == 5){TS_update();INF_update();}
                                 else if (n == 6)Project_start();
@@ -140,7 +140,7 @@ int main()
                                 cin >> n;
                                 if (n == 1)INF_search();
                                 else if (n == 2)INF_change();
-                                else if (n == 3){Stock_show();Stock_get();}
+                                else if (n == 3){stocks::show();Stock_get();}
                                 else if (n == 4)Stock_sale();
                                 else if (n == 5)TS_update();
                                 else if (n == 0){main_page();break;}
@@ -195,7 +195,7 @@ int main()
                                 cin>>n;
                                 if (n == 1)INF_search();
                                 else if (n == 2)INF_change();
-                                else if (n == 3){Stock_show();Stock_get();}
+                                else if (n == 3){stocks::show();Stock_get();}
                                 else if (n == 4)Stock_sale();
                                 else if (n == 5)TS_update();
                                 else if (n == 0){main_page();break;}

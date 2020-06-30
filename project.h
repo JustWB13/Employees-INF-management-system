@@ -5,6 +5,7 @@
 #ifndef EMPLOYEES_INF_MANAGEMENT_SYSTEM
 #define EMPLOYEES_INF_MANAGEMENT_SYSTEM
 #include<iostream>
+#include<fstream>
 #include<string>
 #include<vector>
 #include<set>

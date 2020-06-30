@@ -50,3 +50,50 @@ void projects::show_ROP(string P_ID)
         }
     }
 }
+projects::projects()
+{
+    ifstream pd;
+    pd.open("projects_database.txt",ios::in);
+    int all;
+    pd>>all;
+    string P_ID;
+    string P_NAME;
+    vector<string> PIC_NAME;
+    vector<string> PIC_ID;
+    vector<string> S_ID;
+    string INTRO;
+    int E_AMOUNT,E_ACCOMPLISHED;
+    bool STATUS;
+    double PRICE;
+    for(int i=1;i<=all;i++)
+    {
+        pd>>P_ID>>P_NAME>>PIC_NAME>>PIC_ID>>S_ID>>INTRO>>E_AMOUNT>>E_ACCOMPLISHED>>STATUS>>PRICE;
+        a.push_back(project(P_ID,P_NAME,PIC_NAME,PIC_ID,S_ID,INTRO,E_AMOUNT,E_ACCOMPLISHED,STATUS,PRICE));
+    }
+    pd.close();
+    cout<<"项目文件读取完毕！"<<endl;
+}
+projects::~projects()
+{
+    ofstream pd;
+    pd.open("book_database.txt",ios::out);
+    int all=a.size();
+    pd<<all<<endl;
+    project tmp;
+    for(vector<project>::iterator i=a.begin();i!=a.end();i++)
+    {
+        tmp=*i;
+        pd<<tmp.P_ID<<endl
+          <<tmp.P_NAME<<endl
+          <<tmp.PIC_NAME<<endl
+          <<tmp.PIC_ID<<endl
+          <<tmp.S_ID<<endl
+          <<tmp.INTRO<<endl
+          <<tmp.E_AMOUNT<<endl
+          <<tmp.E_ACCOMPLISHED<<endl
+          <<tmp.STATUS<<endl
+          <<tmp.PRICE<<endl;
+    }
+    pd.close();
+    cout<<"项目文件保存完成！"<<endl;
+}

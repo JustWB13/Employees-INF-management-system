@@ -12,9 +12,9 @@
 using namespace std;
 #endif //EMPLOYEES_INF_MANAGEMENT_SYSTEM
 
-#include"employee.h"
-#include"stock.h"
-#include"project.h"
+#include"employee.cpp"
+#include"stock.cpp"
+#include"project.cpp"
 
 string get_passwd();
 inline int BKDRHash(string a);
@@ -70,7 +70,7 @@ void Stock_sale(string u_id,stocks &S,vector<normal_employee> &NE,vector<section
             }
         }
     }
-    else if(u_id[0=='3')
+    else if(u_id[0]=='3')
     {
         for(vector<normal_employee>::iterator i=NE.begin();i!=NE.end();i++)
         {
