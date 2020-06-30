@@ -36,7 +36,7 @@ int main()
                     else if (n == 3)INF_change(u_id,TE,NE,SC,GM);
                     else if (n == 4)INF_search(u_id,TE,NE,SC,GM);
                     else if (n == 5)wage_statistic(TE,NE,SC,GM);
-                    else if (n == 6)stocks::show(admin_tag);
+                    else if (n == 6)S.show(admin_tag);
                     else if (n == 0)
                     {
                         system("CLS");
@@ -91,7 +91,7 @@ int main()
                                 cin >> n;
                                 if (n == 1)INF_search(u_id,TE,NE,SC,GM);
                                 else if (n == 2)INF_change(u_id,TE,NE,SC,GM);
-                                else if (n == 3){stocks::show(admin_tag);Stock_get(u_id,S,NE,SC,GM);}
+                                else if (n == 3){S.show(admin_tag);Stock_get(u_id,S,NE,SC,GM);}
                                 else if (n == 4)Stock_sale(u_id,S,NE,SC,GM);
                                 else if (n == 5){TS_update(s_id,P,NE,TE);project_end(p_id,gm_id,P,S,GM,SC,NE,TE);}
                                 else if (n == 6)Project_start(P,SC,NE,TE);
@@ -149,7 +149,7 @@ int main()
                                 cin >> n;
                                 if (n == 1)INF_search(u_id,TE,NE,SC,GM);
                                 else if (n == 2)INF_change(u_id,TE,NE,SC,GM);
-                                else if (n == 3){stocks::show(admin_tag);Stock_get(u_id,S,NE,SC,GM);}
+                                else if (n == 3){S.show(admin_tag);Stock_get(u_id,S,NE,SC,GM);}
                                 else if (n == 4)Stock_sale(u_id,S,NE,SC,GM);
                                 else if (n == 5)TS_update(s_id,P,NE,TE);
                                 else if (n == 0){main_page();break;}
@@ -204,7 +204,7 @@ int main()
                                 cin>>n;
                                 if (n == 1)INF_search(u_id,TE,NE,SC,GM);
                                 else if (n == 2)INF_change(u_id,TE,NE,SC,GM);
-                                else if (n == 3){stocks::show(admin_tag);Stock_get(u_id,S,NE,SC,GM);}
+                                else if (n == 3){S.show(admin_tag);Stock_get(u_id,S,NE,SC,GM);}
                                 else if (n == 4)Stock_sale(u_id,S,NE,SC,GM);
                                 else if (n == 5)TS_update(s_id,P,NE,TE);
                                 else if (n == 0){main_page();break;}

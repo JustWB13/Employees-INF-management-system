@@ -6,11 +6,30 @@
 #define EMPLOYEES_INF_MANAGEMENT_SYSTEM
 #include<iostream>
 #include<fstream>
-#include<string>
 #include<vector>
+#include<string>
+#include<cstdlib>
 #include<set>
 using namespace std;
 #endif //EMPLOYEES_INF_MANAGEMENT_SYSTEM
+
+/*
+ 文件结构
+ 工程总数n
+ p_id
+ p_name
+ 负责人总数m
+ pic_name
+ pic_id
+ s_id
+ ...m*3行
+ intro
+ E_amount
+ E_accomplished
+ status
+ price
+ ...*n
+ */
 
 class projects
 {

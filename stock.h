@@ -6,11 +6,25 @@
 #define EMPLOYEES_INF_MANAGEMENT_SYSTEM
 #include<iostream>
 #include<fstream>
-#include<string>
 #include<vector>
+#include<string>
+#include<cstdlib>
 #include<set>
 using namespace std;
 #endif //EMPLOYEES_INF_MANAGEMENT_SYSTEM
+
+/*
+ 文件结构
+ stock_price
+ st_amount
+ 交易总数n
+ status
+ amount
+ price
+ user_ID
+ st_id
+ ...*n
+ */
 
 class stocks
 {

@@ -5,6 +5,7 @@
 #ifndef EMPLOYEES_INF_MANAGEMENT_SYSTEM
 #define EMPLOYEES_INF_MANAGEMENT_SYSTEM
 #include<iostream>
+#include<fstream>
 #include<vector>
 #include<string>
 #include<cstdlib>
@@ -28,6 +29,7 @@ void normal_employee_page();
 void section_chief_page();
 void general_manager_page();
 string enter_passwd();
+void employee_load(vector<general_manager> &GM,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE);//员工信息读入（从文件中）
 void employee_add(set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工添加
 void employee_delete(stocks &S,projects &P,set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工删除
 void INF_change(string u_id,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM);//员工信息修改
@@ -40,6 +42,11 @@ void project_end(string p_id,string gm_id,projects &P,stocks &S,vector<general_m
 void Project_start(projects &P,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE);//启动立项
 void Office_add(vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC);//科室增加(需要一名科长的ID与至少一名普通员工的ID)
 void Office_dismiss(string s_id,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC);//科室解散(需要科室ID)
+
+void employee_load(vector<general_manager> &GM,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE)//员工信息读入（从文件中）
+{
+
+}
 
 void Project_start(projects &P,vector<section_chief> &SC,vector<normal_employee> &NE,vector<temp_employee> &TE)//启动立项
 {
@@ -469,7 +476,7 @@ void INF_search(string u_id,vector<temp_employee> TE,vector<normal_employee> NE,
     }
 }
 
-void employee_delete(stocks &S,projects &P,set<string> &id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM)//员工删除
+void employee_delete(stocks &S,projects &P,set<string> id_check,vector<temp_employee> &TE,vector<normal_employee> &NE,vector<section_chief> &SC,vector<general_manager> &GM)//员工删除
 {
     string id;
     cout<<"请输入要删除的用户ID:";

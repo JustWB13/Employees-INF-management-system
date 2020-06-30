@@ -4,8 +4,10 @@
 
 #ifndef EMPLOYEES_INF_MANAGEMENT_SYSTEM
 #include<iostream>
-#include<string>
+#include<fstream>
 #include<vector>
+#include<string>
+#include<cstdlib>
 #include<set>
 using namespace std;
 #define EMPLOYEES_INF_MANAGEMENT_SYSTEM
