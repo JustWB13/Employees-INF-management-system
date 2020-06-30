@@ -783,7 +783,7 @@ bool admin_check()
     cout<<"*   欢迎进入管理员登陆菜单   *"<<endl;
     cout<<"**************************"<<endl;
     hash = BKDRHash(enter_passwd());
-    if (hash == admin_passwd)//管理员密码
+    if (hash == 46792755)//管理员密码:12345
     {
         return true;
     }
