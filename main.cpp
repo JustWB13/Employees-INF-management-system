@@ -4,6 +4,15 @@
 #include "function.h"
 int main()
 {
+    set<string> id_check;
+    vector<temp_employee> TE;
+    vector<normal_employee> NE;
+    vector<section_chief> SC;
+    vector<general_manager> GM;
+    stocks S;
+    projects P;
+    string u_id,s_id,p_id,gm_id;
+    bool admin_tag;
     int n;
     bool flag=false;
     main_page();
@@ -22,12 +31,12 @@ int main()
                 while (true)
                 {
                     cin >> n;
-                    if (n == 1)employee_add();
-                    else if (n == 2)employee_delete();
-                    else if (n == 3)INF_change();
-                    else if (n == 4)INF_search();
-                    else if (n == 5)wage_statistic();
-                    else if (n == 6)stocks::show();
+                    if (n == 1)employee_add(id_check,TE,NE,SC,GM);
+                    else if (n == 2)employee_delete(S,P,id_check,TE,NE,SC,GM);
+                    else if (n == 3)INF_change(u_id,TE,NE,SC,GM);
+                    else if (n == 4)INF_search(u_id,TE,NE,SC,GM);
+                    else if (n == 5)wage_statistic(TE,NE,SC,GM);
+                    else if (n == 6)stocks::show(admin_tag);
                     else if (n == 0)
                     {
                         system("CLS");
@@ -64,7 +73,7 @@ int main()
             {
                 for (vector<general_manager>::iterator i = GM.begin(); i != GM.end(); i++)
                 {
-                    if (id == (*i).id)
+                    if (id == (*i).get_id())
                     {
 
                         flag = true;
@@ -80,14 +89,14 @@ int main()
                             while(true)
                             {
                                 cin >> n;
-                                if (n == 1)INF_search();
-                                else if (n == 2)INF_change();
-                                else if (n == 3){stocks::show();Stock_get();}
-                                else if (n == 4)Stock_sale();
-                                else if (n == 5){TS_update();INF_update();}
-                                else if (n == 6)Project_start();
-                                else if (n == 7)Office_add();
-                                else if (n == 8)Office_dismiss();
+                                if (n == 1)INF_search(u_id,TE,NE,SC,GM);
+                                else if (n == 2)INF_change(u_id,TE,NE,SC,GM);
+                                else if (n == 3){stocks::show(admin_tag);Stock_get(u_id,S,NE,SC,GM);}
+                                else if (n == 4)Stock_sale(u_id,S,NE,SC,GM);
+                                else if (n == 5){TS_update(s_id,P,NE,TE);project_end(p_id,gm_id,P,S,GM,SC,NE,TE);}
+                                else if (n == 6)Project_start(P,SC,NE,TE);
+                                else if (n == 7)Office_add(TE,NE,SC);
+                                else if (n == 8)Office_dismiss(s_id,TE,NE,SC);
                                 else if (n == 0){main_page();break;}
                                 else
                                 {
@@ -123,7 +132,7 @@ int main()
             {
                 for (vector<section_chief>::iterator i = SC.begin(); i != SC.end(); i++)
                 {
-                    if (id == (*i).id)
+                    if (id == (*i).get_id())
                     {
                         flag = true;
                         section_chief tmp = *i;
@@ -138,11 +147,11 @@ int main()
                             while(true)
                             {
                                 cin >> n;
-                                if (n == 1)INF_search();
-                                else if (n == 2)INF_change();
-                                else if (n == 3){stocks::show();Stock_get();}
-                                else if (n == 4)Stock_sale();
-                                else if (n == 5)TS_update();
+                                if (n == 1)INF_search(u_id,TE,NE,SC,GM);
+                                else if (n == 2)INF_change(u_id,TE,NE,SC,GM);
+                                else if (n == 3){stocks::show(admin_tag);Stock_get(u_id,S,NE,SC,GM);}
+                                else if (n == 4)Stock_sale(u_id,S,NE,SC,GM);
+                                else if (n == 5)TS_update(s_id,P,NE,TE);
                                 else if (n == 0){main_page();break;}
                                 else
                                 {
@@ -178,7 +187,7 @@ int main()
             {
                 for (vector<normal_employee>::iterator i = NE.begin(); i != NE.end(); i++)
                 {
-                    if (id == (*i).id)
+                    if (id == (*i).get_id())
                     {
                         flag = true;
                         normal_employee tmp = *i;
@@ -193,11 +202,11 @@ int main()
                             while(true)
                             {
                                 cin>>n;
-                                if (n == 1)INF_search();
-                                else if (n == 2)INF_change();
-                                else if (n == 3){stocks::show();Stock_get();}
-                                else if (n == 4)Stock_sale();
-                                else if (n == 5)TS_update();
+                                if (n == 1)INF_search(u_id,TE,NE,SC,GM);
+                                else if (n == 2)INF_change(u_id,TE,NE,SC,GM);
+                                else if (n == 3){stocks::show(admin_tag);Stock_get(u_id,S,NE,SC,GM);}
+                                else if (n == 4)Stock_sale(u_id,S,NE,SC,GM);
+                                else if (n == 5)TS_update(s_id,P,NE,TE);
                                 else if (n == 0){main_page();break;}
                                 else
                                 {
@@ -233,7 +242,7 @@ int main()
             {
                 for (vector<temp_employee>::iterator i = TE.begin(); i != TE.end(); i++)
                 {
-                    if (id == (*i).id)
+                    if (id == (*i).get_id())
                     {
                         flag = true;
                         temp_employee tmp = *i;
@@ -244,12 +253,12 @@ int main()
                             cout << "按任意键继续" << endl;
                             getchar();
                             system("CLS");
-                            temp_employee_page(id);
+                            temp_employee_page();
                             while(true)
                             {
                                 cin >> n;
-                                if (n == 1)INF_search();
-                                else if (n == 2)INF_change();
+                                if (n == 1)INF_search(u_id,TE,NE,SC,GM);
+                                else if (n == 2)INF_change(u_id,TE,NE,SC,GM);
                                 else if (n == 0){main_page();break;}
                                 else
                                 {
