@@ -74,3 +74,35 @@ int stocks::stock_sale(string u_id, int amount)
     cout<<"已成功上架!"<<endl;
 }
 double stocks::get_sp() {return stock_price;}
+stocks::stocks()
+{
+    ifstream load;
+    load.open("stocks.txt",ios::in);
+    int n;
+    bool status;
+    int amount;
+    double price;
+    string user_id,st_id;
+    load>>stock_price>>st_amount>>n;
+    for(int i=1;i<=n;i++)
+    {
+        load>>status>>amount>>price>>user_id>>st_id;
+        a.push_back(stock(status,amount,user_id,st_id,price));
+    }
+}
+stocks::~stocks()
+{
+    ofstream save;
+    save.open("stocks.txt",ios::out);
+    save<<stock_price<<endl<<st_amount<<endl;
+    int n=a.size();
+    save<<n<<endl;
+    for(int i=0;i<n;i++)
+    {
+        save<<a[i].status<<endl
+            <<a[i].amount<<endl
+            <<a[i].price<<endl
+            <<a[i].user_ID<<endl
+            <<a[i].st_id<<endl;
+    }
+}
