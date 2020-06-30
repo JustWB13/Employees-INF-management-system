@@ -98,19 +98,53 @@ bool projects::id_check(string p_id)
 void projects::project_add(string id, string name, vector<string> PIC_NAME, vector<string> PIC_ID, vector<string> S_ID, string INTRO, int E_AMOUNT, int E_ACCOMPLISHED, bool STATUS, double PRICE){a.push_back(project(id,name,PIC_NAME,PIC_ID,S_ID,INTRO,E_AMOUNT,E_ACCOMPLISHED,false,PRICE));}
 projects::projects()
 {
-    ifstream pd;
-    pd.open("book_database.txt",ios::in);
-    int all;
-    pd>>all;
-    string name,isbn,pub_house,author;
+    ifstream load;
+    load.open("projects.txt",ios::in);
+    int n;
+    string p_id,p_name;
+    int m;
+    vector<string> pic_name,pic_id,s_id:
+    string intro;
+    int E_amount,E_accomplished;
+    bool status;
     double price;
-    int sales;
-    for(int i=1;i<=all;i++)
+    load>>n;
+    for(int i=1;i<=n;i++)
     {
-        pd>>name>>isbn>>pub_house>>author>>price>>sales;
-        a.push_back(projects(name,isbn,pub_house,author,price,sales));
+        load>>p_id>>p_name>>m;
+        for(int i=1;i<=m;i++)
+        {
+            string pn,pi,si;
+            load>>pn>>pi>>si;
+            pic_name.push_back(pn);
+            pic_id.push_back(pi);
+            s_id.push_back(si);
+        }
+        load>>intro>>E_amount>>E_accomplished>>status>>price;
+        a.push_back(project(p_id,p_name,pic_name,pic_id,s_id,intro,E_amount,E_accomplished,status,price));
     }
-    bd.close();
-    cout<<"Books' database load over!"<<endl;
 }
-books::~books()
+projects::~projects()
+{
+    ofstream save;
+    save.open("project.txt",ios::in);
+    int n=a.size(),m;
+    save<<n<<endl;
+    for(vector<project>::iterator i=a.begin();i!=a.end();i++)
+    {
+        project tmp=(*i);
+        save<<tmp.p_id<<endl<<tmp.p_name<<endl;
+        save<<(m=tmp.pic_id.size())<<endl;
+        for(int j=0;j<m;j++)
+        {
+            save<<tmp.pic_name[j]<<endl
+                <<tmp.pic_id[j]<<endl
+                <<tmp.s_id[j]<<endl;
+        }
+        save<<tmp.intro<<endl
+            <<tmp.E_amount<<endl
+            <<tmp.E_accomplished<<endl
+            <<tmp.status<<endl
+            <<tmp.price<<endl;
+    }
+}
